@@ -5,7 +5,7 @@ Elements
     [X] CheckBox
     [ ] CheckBoxGroup
     [ ] Panel
-    [ ] Button
+    [X] Button
     [ ] Input Field
     [ ] TextArea
     [ ] ScrollView
@@ -22,3 +22,4 @@ Functionality
     [X] Input (tab navigate) IInputable
     [X] ReRender
     [ ] Color
+    [ ] Animations

@@ -27,37 +27,42 @@ namespace Renderer
                     currentItem = Renderer.inputItemsOrdered[currentItemIndex];
                     currentItem.OnHover();
                 }
-                if(key.Key == ConsoleKey.Tab && !pressShift && currentItemIndex+1 < Renderer.inputItemsOrdered.Count)
+                else if(key.Key == ConsoleKey.Tab && !pressShift && currentItemIndex+1 < Renderer.inputItemsOrdered.Count)
                 {
                     if(currentItem != null) currentItem.OnHoverLeave();
                     currentItemIndex++;
                     currentItem = Renderer.inputItemsOrdered[currentItemIndex];
                     currentItem.OnHover();
                 }
-                if(key.Key == ConsoleKey.Enter)
+                else if(key.Key == ConsoleKey.Enter)
                 {
                     if(currentItem != null)
                         currentItem.OnClick();
                 }
-                if(key.Key == ConsoleKey.UpArrow)
+                else if(key.Key == ConsoleKey.UpArrow)
                 {
                     if(currentItem != null)
                         currentItem.OnUpArrow();
                 }
-                if(key.Key == ConsoleKey.DownArrow)
+                else if(key.Key == ConsoleKey.DownArrow)
                 {
                     if(currentItem != null)
                         currentItem.OnDownArrow();
                 }
-                if(key.Key == ConsoleKey.LeftArrow)
+                else if(key.Key == ConsoleKey.LeftArrow)
                 {
                     if(currentItem != null)
                         currentItem.OnLeftArrow();
                 }
-                if(key.Key == ConsoleKey.RightArrow)
+                else if(key.Key == ConsoleKey.RightArrow)
                 {
                     if(currentItem != null)
                         currentItem.OnRightArrow();
+                }
+                else
+                {
+                    if(currentItem != null)
+                        currentItem.OnTextInput(key.Key);
                 }
             }
         }

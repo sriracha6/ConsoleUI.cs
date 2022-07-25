@@ -23,6 +23,7 @@ namespace Renderer
         {
             Console.SetCursorPosition(Position.x, Position.y);
             Console.Write(previousString);
+            Console.SetCursorPosition(Position.x, Position.y);
             Render();
         }
     }

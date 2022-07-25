@@ -57,6 +57,7 @@ namespace Renderer
         {
             Console.SetCursorPosition((int)Position.x, (int)Position.y);
             Console.Write(new string(' ', previousString));
+            Console.SetCursorPosition((int)Position.x, (int)Position.y);
             Render();
         }
     }

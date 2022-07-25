@@ -45,6 +45,7 @@ namespace Renderer
         public void OnLeftArrow() { }
         public void OnRightArrow() { }
         public void OnHoverLeave() { }
+        public void OnTextInput(ConsoleKey character) { }
 
         public void Render()
         {
@@ -56,6 +57,7 @@ namespace Renderer
         {
             Console.SetCursorPosition((int)Position.x, (int)Position.y);
             Console.Write(previousString);
+            Console.SetCursorPosition((int)Position.x, (int)Position.y);
             Render();
         }
     }
