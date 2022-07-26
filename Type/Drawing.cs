@@ -1,5 +1,5 @@
 using System;
-namespace Rendering
+namespace Renderer
 {
     public static class Blocks
     {

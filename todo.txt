@@ -3,10 +3,10 @@ Elements
     [x] ProgressBar
     [ ] RadioGroup
     [X] CheckBox
-    [ ] CheckBoxGroup
-    [ ] Panel
+    [X] Panel
     [X] Button
     [ ] Input Field
+    [ ] OptionGroup
     [ ] TextArea
     [ ] ScrollView
     [ ] Image
@@ -16,6 +16,7 @@ Elements
     [ ] Horizontal Rule
     [ ] Slider
     [ ] Table
+    [ ] Pixel
 
 Functionality
     [x] Renderer/IRenderable
@@ -23,3 +24,5 @@ Functionality
     [X] ReRender
     [ ] Color
     [ ] Animations
+
+[ ] Make every property public, rerender on change
