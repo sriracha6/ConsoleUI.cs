@@ -1,12 +1,13 @@
 Elements
     [x] Label
     [x] ProgressBar
-    [ ] RadioGroup
+    [X] RadioGroup
     [X] CheckBox
     [X] Panel
     [X] Button
-    [ ] Input Field
-    [ ] OptionGroup
+    [ ] Input Field, Scrollable w/left+right arrows
+    [ ] Int Input Field, Scrollable w/left+right arrows
+    [X] OptionGroup
     [ ] TextArea
     [ ] ScrollView
     [ ] Image
@@ -24,5 +25,6 @@ Functionality
     [X] ReRender
     [ ] Color
     [ ] Animations
+    [ ] StyleInfo (new Button(text, styleInfo))
 
 [ ] Make every property public, rerender on change
