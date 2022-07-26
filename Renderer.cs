@@ -11,6 +11,11 @@ namespace Renderer
 
         public static void Render(IInteractive item, Vector2 position)
         {
+            if(position.x < 0 || position.y < 0)
+                throw new ArgumentOutOfRangeException("Position cannot be negative");
+            if(position.x > Console.WindowWidth || position.y > Console.WindowHeight)
+                throw new ArgumentOutOfRangeException("Position cannot be greater than window size");
+            
             Console.SetCursorPosition(position.x, position.y);
             inputItemsOrdered.Add(item);
             inputItemsPositions.Add(position);
@@ -20,6 +25,11 @@ namespace Renderer
 
         public static void Render(IRenderable item, Vector2 position)
         {
+            if(position.x < 0 || position.y < 0)
+                throw new ArgumentOutOfRangeException("Position cannot be negative");
+            if(position.x > Console.WindowWidth || position.y > Console.WindowHeight)
+                throw new ArgumentOutOfRangeException("Position cannot be greater than window size");
+            
             Console.SetCursorPosition(position.x, position.y);
             itemsOrdered.Add(item);
             item.Position = position;

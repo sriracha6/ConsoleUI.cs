@@ -19,8 +19,10 @@ namespace Renderer
             Panel panel = new Panel(20,20,BorderType.Single, ' ');
             RadioGroup radioGroup = new RadioGroup(new List<string>() {"Pick", "one", "of", "us"});
             OptionGroup optionGroup = new OptionGroup(new List<string>() {"Or", "Select", "Us" });
-
+            Slider slider = new Slider(0, 5, 0, 5, 1);
+    
             Renderer.Render(panel, new Vector2(0,0));
+            Renderer.Render(slider, new Vector2(1, 6));
             Renderer.Render(s, new Vector2(21, 0));
             Renderer.Render(p, new Vector2(2, 1));
             Renderer.Render(cb, new Vector2(4, 2));

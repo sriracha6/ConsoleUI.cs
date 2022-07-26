@@ -11,11 +11,12 @@ Elements
     [ ] TextArea
     [ ] ScrollView
     [ ] Image
+    [ ] DropdownMenu
     [ ] TreeView
     [ ] Marquee
     [ ] Blink
     [ ] Horizontal Rule
-    [ ] Slider
+    [X] Slider
     [ ] Table
     [ ] Pixel
 
