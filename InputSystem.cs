@@ -10,7 +10,7 @@ namespace Renderer
         /// <summary>
         /// To be run in a thread. Gets the current input.
         /// </summary>
-        public static void GetInput()
+        internal static void GetInput()
         {
             currentItemIndex = -1;
             for(;;)

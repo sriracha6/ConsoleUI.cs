@@ -7,11 +7,11 @@ namespace Renderer
         public Vector2 Position { get; set; }
         
         public int width;
-        public BorderStyle borderStyle;
+        public BorderType borderStyle;
 
         string previousString;
 
-        public HorizontalRule(int width, BorderStyle borderStyle)
+        public HorizontalRule(int width, BorderType borderStyle)
         {
             this.width = width;
             this.borderStyle = borderStyle;

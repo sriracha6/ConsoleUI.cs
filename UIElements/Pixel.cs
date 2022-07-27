@@ -6,10 +6,10 @@ namespace Renderer
     {
         public Vector2 Position { get; set; }
 
-        public char Char;
+        public char? Char;
         public ConsoleColor Color;
 
-        public Pixel(char Char, ConsoleColor fgColor)
+        public Pixel(char? Char, ConsoleColor fgColor)
         {
             this.Char = Char;
             this.Color = fgColor;

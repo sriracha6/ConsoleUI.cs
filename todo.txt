@@ -11,6 +11,8 @@ Elements
     [ ] TextArea
     [ ] ListView
     [ ] Image
+    [X] Vertical Scrollbar
+    [ ] Horizontal Scrollbar
     [ ] DropdownMenu
     [ ] TreeView
     [ ] Marquee
@@ -26,6 +28,7 @@ Functionality
     [X] Input (tab navigate) IInputable
     [X] ReRender
     [ ] Color
+    [ ] Derive from UIElement
     [ ] Animations
     [ ] OnHovers
     [ ] Placeholders in text boxes

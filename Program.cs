@@ -10,8 +10,9 @@ namespace Renderer
         {
             int clicks = 0;
             Console.Clear();
-            Thread inputThread = new Thread(Input.GetInput);
-            inputThread.Start();
+
+            Window.Init(120,30);
+
             Label s = new Label("Hello, World!");
             ProgressBar p = new ProgressBar(3, 7);
             CheckBox cb = new CheckBox("Check me!", false);
@@ -23,8 +24,10 @@ namespace Renderer
             InputField inputfield = new InputField("Type here", 10, 100);
             IntInputField intinputfield = new IntInputField(0, 5, 100, -5);
 
+            VerticalScrollBar vscroller = new VerticalScrollBar(0, 10);
+
             Renderer.Render(panel, new Vector2(0,0));
-            Renderer.Render(intinputfield, new Vector2(15,16));
+            Renderer.Render(vscroller, new Vector2(30, 7));
             Renderer.Render(s, new Vector2(21, 0));
             Renderer.Render(p, new Vector2(2, 1));
             Renderer.Render(cb, new Vector2(4, 2));
@@ -33,6 +36,7 @@ namespace Renderer
             Renderer.Render(optionGroup, new Vector2(21, 9));
             Renderer.Render(slider, new Vector2(1, 6));
             Renderer.Render(inputfield, new Vector2(15,15));
+            Renderer.Render(intinputfield, new Vector2(15,16));
         }
     }
 }
