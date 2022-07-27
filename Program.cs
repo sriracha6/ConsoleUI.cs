@@ -20,15 +20,19 @@ namespace Renderer
             RadioGroup radioGroup = new RadioGroup(new List<string>() {"Pick", "one", "of", "us"});
             OptionGroup optionGroup = new OptionGroup(new List<string>() {"Or", "Select", "Us" });
             Slider slider = new Slider(0, 5, 0, 5, 1);
-    
+            InputField inputfield = new InputField("Type here", 10, 100);
+            IntInputField intinputfield = new IntInputField(0, 5, 100, -5);
+
             Renderer.Render(panel, new Vector2(0,0));
-            Renderer.Render(slider, new Vector2(1, 6));
+            Renderer.Render(intinputfield, new Vector2(15,16));
             Renderer.Render(s, new Vector2(21, 0));
             Renderer.Render(p, new Vector2(2, 1));
             Renderer.Render(cb, new Vector2(4, 2));
             Renderer.Render(button, new Vector2(6, 3));
             Renderer.Render(radioGroup, new Vector2(21, 4));
             Renderer.Render(optionGroup, new Vector2(21, 9));
+            Renderer.Render(slider, new Vector2(1, 6));
+            Renderer.Render(inputfield, new Vector2(15,15));
         }
     }
 }

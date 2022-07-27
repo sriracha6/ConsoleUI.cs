@@ -62,7 +62,7 @@ namespace Renderer
                 else
                 {
                     if(currentItem != null)
-                        currentItem.OnTextInput(key.Key);
+                        currentItem.OnTextInput(key);
                 }
             }
         }

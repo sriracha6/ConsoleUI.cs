@@ -5,8 +5,8 @@ Elements
     [X] CheckBox
     [X] Panel
     [X] Button
-    [ ] Input Field, Scrollable w/left+right arrows
-    [ ] Int Input Field, Scrollable w/left+right arrows
+    [x] Input Field, Scrollable w/left+right arrows
+    [X] Int Input Field, Scrollable w/left+right arrows
     [X] OptionGroup
     [ ] TextArea
     [ ] ScrollView
@@ -19,6 +19,7 @@ Elements
     [X] Slider
     [ ] Table
     [ ] Pixel
+    [ ] Tooltip?
 
 Functionality
     [x] Renderer/IRenderable
@@ -26,6 +27,8 @@ Functionality
     [X] ReRender
     [ ] Color
     [ ] Animations
+    [ ] OnHovers
+    [ ] Placeholders in text boxes
     [ ] StyleInfo (new Button(text, styleInfo))
 
 [ ] Make every property public, rerender on change

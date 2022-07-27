@@ -89,6 +89,6 @@ namespace Renderer
         public void OnRightArrow() { }
         public void OnHoverLeave() { }
 
-        public void OnTextInput(ConsoleKey character) { }
+        public void OnTextInput(ConsoleKeyInfo character) { }
     }
 }

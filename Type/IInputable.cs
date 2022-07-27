@@ -12,6 +12,6 @@ namespace Renderer
         void OnRightArrow();
         void OnHoverLeave();
 
-        void OnTextInput(ConsoleKey character);
+        void OnTextInput(ConsoleKeyInfo character);
     }
 }
