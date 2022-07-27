@@ -9,16 +9,16 @@ Elements
     [X] Int Input Field, Scrollable w/left+right arrows
     [X] OptionGroup
     [ ] TextArea
-    [ ] ScrollView
+    [ ] ListView
     [ ] Image
     [ ] DropdownMenu
     [ ] TreeView
     [ ] Marquee
     [ ] Blink
-    [ ] Horizontal Rule
+    [X] Horizontal Rule
     [X] Slider
     [ ] Table
-    [ ] Pixel
+    [X] Pixel
     [ ] Tooltip?
 
 Functionality
