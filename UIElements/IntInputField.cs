@@ -16,6 +16,20 @@ namespace Renderer
         public string rightSide = "]";
         public string upDown = "^v";
 
+        bool _Visible;
+        public bool Visible 
+        { 
+            get { return _Visible; } 
+            set 
+            {
+                _Visible = value;
+                if (value)
+                    Render();
+                else
+                    DeRender();
+            } 
+        }
+
         string previousString;
 
         public IntInputField(int text, int width, int maxValue, int minValue)
@@ -49,10 +63,15 @@ namespace Renderer
             previousString = UIElement.ParsePreviousString(s);
         }
 
+        public void DeRender()
+        {
+            Console.SetCursorPosition(Position.x, Position.y);
+            Console.Write(previousString);
+        }
+
         public void ReRender()
         {
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
-            Console.Write(previousString);
+            DeRender();
             Console.SetCursorPosition((int)Position.x, (int)Position.y);
             Render();
         }

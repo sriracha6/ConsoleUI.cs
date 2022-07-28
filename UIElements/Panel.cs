@@ -9,6 +9,20 @@ namespace Renderer
         int width;
         int height;
 
+        bool _Visible;
+        public bool Visible 
+        { 
+            get { return _Visible; } 
+            set 
+            {
+                _Visible = value;
+                if (value)
+                    Render();
+                else
+                    DeRender();
+            } 
+        }
+
         Border border;
         BorderType borderType;
         char fillChar;
@@ -21,6 +35,12 @@ namespace Renderer
             this.borderType = borderType;
             this.fillChar = fillChar;
             this.border = new Border(borderType);
+        }
+
+        public void DeRender()
+        {
+            Console.SetCursorPosition(Position.x, Position.y);
+            Console.Write(previousString);
         }
 
         public void Render()
@@ -54,8 +74,7 @@ namespace Renderer
 
         public void ReRender()
         {
-            Console.SetCursorPosition(Position.x, Position.y);
-            Console.Write(previousString);
+            DeRender();
             Console.SetCursorPosition(Position.x, Position.y);
             Render();
         }

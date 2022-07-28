@@ -11,6 +11,20 @@ namespace Renderer
         public int width;
         public int step;
 
+        bool _Visible;
+        public bool Visible 
+        { 
+            get { return _Visible; } 
+            set 
+            {
+                _Visible = value;
+                if (value)
+                    Render();
+                else
+                    DeRender();
+            } 
+        }
+
         public string leftSide = "[";
         public string slider = "|";
         public string rightSide = "]";
@@ -48,10 +62,15 @@ namespace Renderer
             previousString = s.Length;
         }
 
-        public void ReRender()
+        public void DeRender()
         {
             Console.SetCursorPosition((int)Position.x, (int)Position.y);
             Console.Write(new string(' ', previousString));
+        }
+
+        public void ReRender()
+        {
+            DeRender();
             Console.SetCursorPosition((int)Position.x, (int)Position.y);
             Render();
         }

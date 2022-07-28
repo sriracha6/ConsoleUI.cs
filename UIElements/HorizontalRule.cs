@@ -10,6 +10,20 @@ namespace Renderer
         public BorderType borderStyle;
 
         string previousString;
+        
+        bool _Visible;
+        public bool Visible 
+        { 
+            get { return _Visible; } 
+            set 
+            {
+                _Visible = value;
+                if (value)
+                    Render();
+                else
+                    DeRender();
+            } 
+        }
 
         public HorizontalRule(int width, BorderType borderStyle)
         {
@@ -24,10 +38,15 @@ namespace Renderer
             Console.Write(s);
         }
 
-        public void ReRender()
+        public void DeRender()
         {
             Console.SetCursorPosition(Position.x, Position.y);
             Console.Write(previousString);
+        }
+
+        public void ReRender()
+        {
+            DeRender();
             Console.SetCursorPosition(Position.x, Position.y);
             Render();
         }

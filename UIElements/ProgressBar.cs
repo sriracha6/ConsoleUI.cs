@@ -17,6 +17,20 @@ namespace Renderer
         char progressChar = '#';
         char noProgress = ' ';
         
+        bool _Visible;
+        public bool Visible 
+        { 
+            get { return _Visible; } 
+            set 
+            {
+                _Visible = value;
+                if (value)
+                    Render();
+                else
+                    DeRender();
+            } 
+        }
+
         private int _width;
         public int Width {get {return _width;} set { _width = value; ReRender(); }}
 
@@ -53,10 +67,15 @@ namespace Renderer
             Console.Write(rightSide);
         }
 
-        public void ReRender()
+        public void DeRender()
         {
             Console.SetCursorPosition((int)Position.x, (int)Position.y);
             Console.Write(new string(' ', previousString));
+        }
+
+        public void ReRender()
+        {
+            DeRender();
             Console.SetCursorPosition((int)Position.x, (int)Position.y);
             Render();
         }

@@ -9,7 +9,7 @@ Elements
     [X] Int Input Field
     [X] OptionGroup
     [ ] TextArea
-    [ ] ListView
+    [X] ListView
     [ ] Image
     [X] Vertical Scrollbar
     [ ] Horizontal Scrollbar
@@ -31,10 +31,11 @@ Functionality
     [X] Input (tab navigate) IInputable
     [X] ReRender
     [ ] Color
-    [ ] Derive from UIElement
+    [X] Derive from UIElement
     [ ] Animations
     [ ] OnHovers (bold, not bgcolor)
     [ ] Placeholders in text boxes
     [ ] StyleInfo (new Button(text, styleInfo))
 
 [ ] Make every property public, rerender on change
+[ ] Ansi string class. IE new AnsiString("Hello") + " World!".Color(ConsoleColor.Green) + " Bold".Bold();

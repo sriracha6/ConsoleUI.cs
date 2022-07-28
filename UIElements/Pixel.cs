@@ -9,6 +9,20 @@ namespace Renderer
         public char? Char;
         public ConsoleColor Color;
 
+        bool _Visible;
+        public bool Visible 
+        { 
+            get { return _Visible; } 
+            set 
+            {
+                _Visible = value;
+                if (value)
+                    Render();
+                else
+                    DeRender();
+            } 
+        }
+
         public Pixel(char? Char, ConsoleColor fgColor)
         {
             this.Char = Char;
@@ -35,11 +49,16 @@ namespace Renderer
             Console.ResetColor();
         }
 
-        public void ReRender()
+        public void DeRender()
         {
             Console.SetCursorPosition(Position.x, Position.y);
             Console.ResetColor();
             Console.Write(' ');
+        }
+
+        public void ReRender()
+        {
+            DeRender();
             Console.SetCursorPosition(Position.x, Position.y);
             Render();
         }

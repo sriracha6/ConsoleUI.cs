@@ -9,6 +9,20 @@ namespace Renderer
         public string text { get {return _text;} set {_text = value; ReRender();}}
         private string previousString;
 
+        bool _Visible;
+        public bool Visible 
+        { 
+            get { return _Visible; } 
+            set 
+            {
+                _Visible = value;
+                if (value)
+                    Render();
+                else
+                    DeRender();
+            } 
+        }
+
         public Label(string text)
         {
             this._text = text;
@@ -19,10 +33,16 @@ namespace Renderer
             previousString = UIElement.ParsePreviousString(text);
             Console.Write(text);
         }
-        public void ReRender()
+
+        public void DeRender()
         {
             Console.SetCursorPosition(Position.x, Position.y);
             Console.Write(previousString);
+        }
+
+        public void ReRender()
+        {
+            DeRender();
             Console.SetCursorPosition(Position.x, Position.y);
             Render();
         }

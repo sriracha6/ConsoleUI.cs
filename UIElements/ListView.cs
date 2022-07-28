@@ -12,7 +12,7 @@ namespace Renderer
         {
             get { return _Height; }
             set { _Height = value; 
-            
+            DeRender();
             scrollBar = new VerticalScrollBar(0, _Height);
             scrollBar.Position = new Vector2(Position.x + Width - 1, Position.y);
             scrollBar.Render();
@@ -21,6 +21,21 @@ namespace Renderer
             
             }
         }
+
+        bool _Visible;
+        public bool Visible 
+        { 
+            get { return _Visible; } 
+            set 
+            {
+                _Visible = value;
+                if (value)
+                    Render();
+                else
+                    DeRender();
+            } 
+        }
+
         List<string> options = new List<string>();
 
         int progress;
@@ -66,7 +81,7 @@ namespace Renderer
             }
         }
 
-        public void ReRender()
+        public void DeRender()
         {
             Console.SetCursorPosition(Position.x, Position.y);
             Console.ResetColor();
@@ -75,6 +90,11 @@ namespace Renderer
                 Console.Write(new string(' ', Width));
                 Console.SetCursorPosition(Position.x, Position.y+i+1);
             }
+        }
+
+        public void ReRender()
+        {
+            DeRender();
             Console.SetCursorPosition(Position.x, Position.y);
             Render();
         }

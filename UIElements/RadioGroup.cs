@@ -17,6 +17,20 @@ namespace Renderer
 
         string previousString = "";
 
+        bool _Visible;
+        public bool Visible 
+        { 
+            get { return _Visible; } 
+            set 
+            {
+                _Visible = value;
+                if (value)
+                    Render();
+                else
+                    DeRender();
+            } 
+        }
+
         public delegate void OnValueChange();
         public event OnValueChange OnValueChangeEvent;
 
@@ -44,16 +58,26 @@ namespace Renderer
             }
         }
 
-        public void ReRender()
+        public void DeRender()
         {
             Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            int nlcount = 0;
             for(int i = 0; i < previousString.Length; i++)
             {
-                if(previousString[i] != '\n')
+                if(previousString[i] == ' ')
                     Console.Write(' ');
                 else
-                    Console.SetCursorPosition((int)Position.x, (int)Position.y+i+1);
+                {
+                    nlcount++;
+                    Console.SetCursorPosition(Position.x, Position.y+nlcount);
+                }
             }
+            previousString = "";
+        }
+
+        public void ReRender()
+        {
+            DeRender();
             Console.SetCursorPosition((int)Position.x, (int)Position.y);
             Render();
         }

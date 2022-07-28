@@ -12,6 +12,20 @@ namespace Renderer
         public delegate void OnValueChangeDelegate();
         public event OnValueChangeDelegate OnValueChange;
         
+        bool _Visible;
+        public bool Visible 
+        { 
+            get { return _Visible; } 
+            set 
+            {
+                _Visible = value;
+                if (value)
+                    Render();
+                else
+                    DeRender();
+            } 
+        }
+
         string leftSide = "[";
         string checkedC = "X";
         string rightSide = "]";
@@ -53,10 +67,14 @@ namespace Renderer
             previousString = UIElement.ParsePreviousString(s);
             Console.Write(s);
         }
-        public void ReRender()
+        public void DeRender()
         {
             Console.SetCursorPosition((int)Position.x, (int)Position.y);
             Console.Write(previousString);
+        }
+        public void ReRender()
+        {
+            DeRender();
             Console.SetCursorPosition((int)Position.x, (int)Position.y);
             Render();
         }

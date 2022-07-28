@@ -5,6 +5,19 @@ namespace Renderer
     public class Button : IInteractive
     {
         public Vector2 Position { get; set; }
+        bool _Visible;
+        public bool Visible 
+        { 
+            get { return _Visible; } 
+            set 
+            {
+                _Visible = value;
+                if (value)
+                    Render();
+                else
+                    DeRender();
+            } 
+        }
         private string _Text;
         public string Text { get { return _Text; } set { _Text = value; ReRender(); } }
         private string previousString;
@@ -32,11 +45,16 @@ namespace Renderer
             previousString = UIElement.ParsePreviousString(s);
             Console.Write(s);
         }
+        
+        public void DeRender()
+        {
+            Console.SetCursorPosition(Position.x, Position.y);
+            Console.Write(previousString);
+        }
 
         public void ReRender()
         {
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
-            Console.Write(previousString);
+            DeRender();
             Console.SetCursorPosition((int)Position.x, (int)Position.y);
             Render();
         }

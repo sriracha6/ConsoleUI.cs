@@ -8,6 +8,20 @@ namespace Renderer
         int _Progress;
         public int Progress { get { return _Progress; } set { _Progress = value; ReRender(); } }
         public int Height;
+
+        bool _Visible;
+        public bool Visible 
+        { 
+            get { return _Visible; } 
+            set 
+            {
+                _Visible = value;
+                if (value)
+                    Render();
+                else
+                    DeRender();
+            } 
+        }
         
         char sliderChar = '|';
         char ends = '#';
@@ -47,7 +61,7 @@ namespace Renderer
             Console.Write(ends);
         }
 
-        public void ReRender()
+        public void DeRender()
         {
             Console.SetCursorPosition(Position.x, Position.y);
             for(int i = 0; i < previousString; i++)
@@ -56,6 +70,11 @@ namespace Renderer
                 Console.Write(" ");
             }
             previousString = 0;
+        }
+
+        public void ReRender()
+        {
+            DeRender();
             Console.SetCursorPosition(Position.x, Position.y);
             Render();
         }
