@@ -18,10 +18,13 @@ namespace Renderer
                 var key = Console.ReadKey(true);
                 bool pressShift = key.Modifiers == ConsoleModifiers.Shift;
                 currentKey = key;
-                if(key.Key == ConsoleKey.Tab && pressShift && currentItemIndex > 0)
+                if(key.Key == ConsoleKey.Tab && pressShift)
                 {
                     if(currentItem != null) currentItem.OnHoverLeave();
-                    currentItemIndex--;
+                    if(currentItemIndex > 0)
+                        currentItemIndex--;
+                    else
+                        currentItemIndex = Renderer.inputItemsOrdered.Count - 1;
                     var pos = Renderer.inputItemsPositions[currentItemIndex];
                     Console.SetCursorPosition(pos.x, pos.y);
                     currentItem = Renderer.inputItemsOrdered[currentItemIndex];

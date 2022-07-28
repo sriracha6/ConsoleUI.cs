@@ -55,6 +55,22 @@ namespace Renderer
                     horizontalChar = '═';
                     verticalChar = '║';
                     break;
+                case BorderType.Thick:
+                    topLeftChar = '▛';
+                    topRightChar = '▜';
+                    bottomLeftChar = '▙';
+                    bottomRightChar = '▟';
+                    horizontalChar = '▄';
+                    verticalChar = '█';
+                    break;       
+                case BorderType.PictureFrame:
+                    topLeftChar = '▛';
+                    topRightChar = '▜';
+                    bottomLeftChar = '▙';
+                    bottomRightChar = '▟';
+                    horizontalChar = ' ';
+                    verticalChar = ' ';
+                    break;    
             }
         }
     }

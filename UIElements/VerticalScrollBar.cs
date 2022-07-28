@@ -5,7 +5,8 @@ namespace Renderer
     public class VerticalScrollBar : IInteractive
     {
         public Vector2 Position { get; set; }
-        public int Progress;
+        int _Progress;
+        public int Progress { get { return _Progress; } set { _Progress = value; ReRender(); } }
         public int Height;
         
         char sliderChar = '|';
@@ -16,13 +17,13 @@ namespace Renderer
 
         public VerticalScrollBar(int progress, int height)
         {
-            this.Progress = progress;
+            this._Progress = progress;
             this.Height = height;
         }
 
         public VerticalScrollBar(int progress, int height, char sliderChar, char ends, char noProgress)
         {
-            this.Progress = progress;
+            this._Progress = progress;
             this.sliderChar = sliderChar;
             this.ends = ends;
             this.Height = height;
@@ -31,6 +32,8 @@ namespace Renderer
 
         public void Render()
         {
+            if(Progress < 0) Progress = 0;
+            if(Progress > Height-1) Progress = Height-1;
             Console.Write(ends);
             for(int i = 0; i < Height; i++)
             {

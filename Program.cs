@@ -25,9 +25,10 @@ namespace Renderer
             IntInputField intinputfield = new IntInputField(0, 5, 100, -5);
 
             VerticalScrollBar vscroller = new VerticalScrollBar(0, 10);
+            ListView listView = new ListView(new List<string>() {"Hello", "World", "Amirite!", "However", "This", "Panel", "contains", "a", "lot so", "you may", "need", "to scroll"}, 10, 5);
 
             Renderer.Render(panel, new Vector2(0,0));
-            Renderer.Render(vscroller, new Vector2(30, 7));
+            Renderer.Render(listView, new Vector2(30,6));
             Renderer.Render(s, new Vector2(21, 0));
             Renderer.Render(p, new Vector2(2, 1));
             Renderer.Render(cb, new Vector2(4, 2));

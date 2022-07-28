@@ -5,8 +5,8 @@ Elements
     [X] CheckBox
     [X] Panel
     [X] Button
-    [x] Input Field, Scrollable w/left+right arrows
-    [X] Int Input Field, Scrollable w/left+right arrows
+    [x] Input Field
+    [X] Int Input Field
     [X] OptionGroup
     [ ] TextArea
     [ ] ListView
@@ -14,6 +14,9 @@ Elements
     [X] Vertical Scrollbar
     [ ] Horizontal Scrollbar
     [ ] DropdownMenu
+    [ ] GroupBox
+    [ ] BigTextBox - modified listview
+    [ ] SelectListView - modified listview
     [ ] TreeView
     [ ] Marquee
     [ ] Blink
@@ -30,7 +33,7 @@ Functionality
     [ ] Color
     [ ] Derive from UIElement
     [ ] Animations
-    [ ] OnHovers
+    [ ] OnHovers (bold, not bgcolor)
     [ ] Placeholders in text boxes
     [ ] StyleInfo (new Button(text, styleInfo))
 

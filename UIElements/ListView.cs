@@ -3,23 +3,34 @@ using System.Collections.Generic;
 
 namespace Renderer
 {
-    public class ListView : IRenderable
+    public class ListView : IInteractive
     {
         public Vector2 Position { get; set; }
         public int Width { get; set; }
-        public int Height { get; set; }
-        public BorderType borderType;
+        int _Height;
+        public int Height 
+        {
+            get { return _Height; }
+            set { _Height = value; 
+            
+            scrollBar = new VerticalScrollBar(0, _Height);
+            scrollBar.Position = new Vector2(Position.x + Width - 1, Position.y);
+            scrollBar.Render();
 
+            ReRender();
+            
+            }
+        }
         List<string> options = new List<string>();
 
+        int progress;
         public VerticalScrollBar scrollBar;
 
-        public ListView(List<string> options, int width, int height, BorderType BorderType)
+        public ListView(List<string> options, int width, int height)
         {
             this.options = options;
             this.Width = width;
-            this.Height = height;
-            this.borderType = BorderType;
+            this._Height = height;
         }
 
         public void AddItem(string item)
@@ -36,23 +47,79 @@ namespace Renderer
 
         public void Render()
         {
-            Panel p = new Panel(Width, Height, borderType, ' ');
-            p.Position = Position;
-            p.Render();
-            Console.SetCursorPosition(Position.x, Position.y);
-            for (int i = 0; i < options.Count; i++)
+            if(scrollBar == null)
             {
+                scrollBar = new VerticalScrollBar(0, _Height);
+                scrollBar.Position = new Vector2(Position.x + Width - 1, Position.y);
+                scrollBar.Render();
+            }
+            scrollBar.ReRender();
+
+            int y = 0;
+            for (int i = progress; i < progress+Height+1; i++)
+            {
+                if(i >= Height+1+progress || i >= options.Count) 
+                    break;
+                Console.SetCursorPosition(Position.x, Position.y + y);
                 Console.Write(options[i]);
-                Console.SetCursorPosition(Position.x, Position.y + i + 1);
+                y++;
             }
         }
 
         public void ReRender()
         {
             Console.SetCursorPosition(Position.x, Position.y);
-            Console.Write(new string(' ', Width * Height));
+            Console.ResetColor();
+            for(int i = 0; i < Height+1; i++)
+            {
+                Console.Write(new string(' ', Width));
+                Console.SetCursorPosition(Position.x, Position.y+i+1);
+            }
             Console.SetCursorPosition(Position.x, Position.y);
             Render();
         }
+
+        public void OnHover() { }
+        public void OnClick() { }
+        public void OnUpArrow() 
+        {
+            int scrollerHeight = Height-1;
+            Console.WriteLine(scrollerHeight);
+            if(progress-1 > -1)
+            {
+                /*if (progress-1 < Height)
+                    scrollBar.Progress = 0;
+                else if (progress-1 > options.Count - Height)
+                    scrollBar.Progress = Height;
+                else*/
+                if(progress - 1 >= scrollBar.Progress + (Height - 2))
+                    scrollBar.Progress = (progress-1) - Height;
+                progress--;
+            }
+            ReRender();
+        }
+        public void OnDownArrow() 
+        {
+            int scrollerHeight = Height-1;
+            if(progress+1 < options.Count-Height)
+            {
+                //for(int i = 0; i < (int)((progress+1)%(options.Count-Height/scrollerHeight)); i++)
+                //    scrollBar.OnDownArrow();
+                /*if (progress+1 < Height)
+                    scrollBar.Progress = 0;
+                else if (progress+1 > options.Count - Height)
+                    scrollBar.Progress = Height;
+                else*/
+                if(progress + 1 >= scrollBar.Progress + (Height - 2))
+                    scrollBar.Progress = (progress+1) - Height;
+                progress++;
+            }
+            ReRender();
+        }
+        public void OnLeftArrow() { }
+        public void OnRightArrow() { }
+        public void OnHoverLeave() { }
+
+        public void OnTextInput(ConsoleKeyInfo character) { }
     }
 }

@@ -8,6 +8,8 @@ namespace Renderer
         PlusAndLines,
         Single,
         Double,
-        Solid
+        Solid,
+        Thick,
+        PictureFrame
     }
 }
