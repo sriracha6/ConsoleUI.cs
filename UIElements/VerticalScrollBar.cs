@@ -32,8 +32,6 @@ namespace Renderer
 
         public void Render()
         {
-            if(Progress < 0) Progress = 0;
-            if(Progress > Height-1) Progress = Height-1;
             Console.Write(ends);
             for(int i = 0; i < Height; i++)
             {

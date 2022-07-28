@@ -92,10 +92,11 @@ namespace Renderer
                 else if (progress-1 > options.Count - Height)
                     scrollBar.Progress = Height;
                 else*/
-                if(progress - 1 >= scrollBar.Progress + (Height - 2))
-                    scrollBar.Progress = (progress-1) - Height;
+                scrollBar.Progress = Height-(int)(1f/(progress - 1 + Height/2) * (options.Count)); 
                 progress--;
             }
+            else
+                scrollBar.Progress = 0;
             ReRender();
         }
         public void OnDownArrow() 
@@ -110,10 +111,11 @@ namespace Renderer
                 else if (progress+1 > options.Count - Height)
                     scrollBar.Progress = Height;
                 else*/
-                if(progress + 1 >= scrollBar.Progress + (Height - 2))
-                    scrollBar.Progress = (progress+1) - Height;
+                scrollBar.Progress = Height-(int)(1f/(progress + 1 + Height/2) * (options.Count)); 
                 progress++;
             }
+            else
+                scrollBar.Progress = Height-1;
             ReRender();
         }
         public void OnLeftArrow() { }
