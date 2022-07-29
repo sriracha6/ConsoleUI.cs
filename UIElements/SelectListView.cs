@@ -3,11 +3,18 @@ using System.Collections.Generic;
 
 namespace Renderer
 {
-    public class ListView : IInteractive
+    // TODO: any changes to listview must be made to this. im gonna forget to do it and then have to rewrite this
+    public class SelectListView : IInteractive
     {
         public Vector2 Position { get; set; }
         public int Width { get; set; }
         int _Height;
+
+        public int SelectedItemIndex;
+        public string SelectedItem { get { return options[SelectedItemIndex]; } }
+
+        int hoveredItem;
+
         public int Height 
         {
             get { return _Height; }
@@ -36,17 +43,20 @@ namespace Renderer
             } 
         }
 
+        public ConsoleColor selectedColor;
+
         public bool outieScrollbars = false;
         List<string> options = new List<string>();
 
         int progress;
         public VerticalScrollBar scrollBar;
 
-        public ListView(List<string> options, int width, int height, bool outieScrollbars)
+        public SelectListView(List<string> options, int width, int height, ConsoleColor selectedColor, bool outieScrollbars)
         {
             this.options = options;
             this.Width = width;
             this._Height = height;
+            this.selectedColor = selectedColor;
             this.outieScrollbars = outieScrollbars;
         }
 
@@ -89,8 +99,11 @@ namespace Renderer
             {
                 if(i >= Height+1+progress || i >= options.Count) 
                     break;
+                if(i == SelectedItemIndex)
+                    Console.BackgroundColor = selectedColor; 
                 Console.SetCursorPosition(Position.x, Position.y + y);
                 Console.Write(options[i]);
+                Console.ResetColor();
                 y++;
             }
         }
@@ -114,7 +127,11 @@ namespace Renderer
         }
 
         public void OnHover() { }
-        public void OnClick() { }
+        public void OnClick() 
+        { 
+            SelectedItemIndex = hoveredItem;
+            ReRender();
+        }
         public void OnUpArrow() 
         {
             int scrollerHeight = Height-1;
@@ -152,8 +169,16 @@ namespace Renderer
                 scrollBar.Progress = Height-1;
             ReRender();
         }
-        public void OnLeftArrow() { }
-        public void OnRightArrow() { }
+        public void OnLeftArrow() 
+        {
+            if(hoveredItem-1 > -1)
+                hoveredItem--;
+        }
+        public void OnRightArrow() 
+        {
+            if(hoveredItem+1 < options.Count)
+                hoveredItem++;
+        }
         public void OnHoverLeave() { }
 
         public void OnTextInput(ConsoleKeyInfo character) { }

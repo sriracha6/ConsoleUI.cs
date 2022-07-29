@@ -39,8 +39,19 @@ namespace Renderer
 
         public void DeRender()
         {
-            Console.SetCursorPosition(Position.x, Position.y);
-            Console.Write(previousString);
+            Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            int nlcount = 0;
+            for(int i = 0; i < previousString.Length; i++)
+            {
+                if(previousString[i] == ' ')
+                    Console.Write(' ');
+                else
+                {
+                    nlcount++;
+                    Console.SetCursorPosition(Position.x, Position.y+nlcount);
+                }
+            }
+            previousString = "";
         }
 
         public void Render()
@@ -67,7 +78,7 @@ namespace Renderer
                     
                     previousString += " ";
                 }
-                Console.Write("\n");
+                Console.SetCursorPosition(Position.x, Position.y+i+1);
                 previousString += "\n";
             }
         }

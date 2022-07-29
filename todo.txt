@@ -14,9 +14,9 @@ Elements
     [X] Vertical Scrollbar
     [ ] Horizontal Scrollbar
     [ ] DropdownMenu
-    [ ] GroupBox
-    [ ] BigTextBox - modified listview
-    [ ] SelectListView - modified listview
+    [X] GroupBox
+    [X] BigTextBox - modified listview
+    [X] SelectListView - modified listview
     [ ] TreeView
     [ ] Marquee
     [ ] Blink
