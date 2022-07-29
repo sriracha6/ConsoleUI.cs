@@ -29,7 +29,7 @@ namespace Renderer
             }
         }
 
-        bool _Visible;
+        bool _Visible = true;
         public bool Visible 
         { 
             get { return _Visible; } 
@@ -50,6 +50,9 @@ namespace Renderer
 
         int progress;
         public VerticalScrollBar scrollBar;
+
+        public delegate void OnValueChange();
+        public event OnValueChange OnValueChangeEvent;
 
         public SelectListView(List<string> options, int width, int height, ConsoleColor selectedColor, bool outieScrollbars)
         {
@@ -130,6 +133,8 @@ namespace Renderer
         public void OnClick() 
         { 
             SelectedItemIndex = hoveredItem;
+            if(OnValueChangeEvent != null)
+                OnValueChangeEvent();
             ReRender();
         }
         public void OnUpArrow() 

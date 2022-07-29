@@ -9,7 +9,7 @@ namespace Renderer
         public int Progress { get { return _Progress; } set { _Progress = value; ReRender(); } }
         public int Height;
 
-        bool _Visible;
+        bool _Visible = true;
         public bool Visible 
         { 
             get { return _Visible; } 

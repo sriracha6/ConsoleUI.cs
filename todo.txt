@@ -13,10 +13,10 @@ Elements
     [ ] Image
     [X] Vertical Scrollbar
     [ ] Horizontal Scrollbar
-    [ ] DropdownMenu
+    [ ] DropdownMenu - selectlistview hidden/shjown
     [X] GroupBox
-    [X] BigTextBox - modified listview
-    [X] SelectListView - modified listview
+    [X] BigTextBox
+    [X] SelectListView
     [ ] TreeView
     [ ] Marquee
     [ ] Blink

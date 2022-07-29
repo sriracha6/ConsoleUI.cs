@@ -11,7 +11,7 @@ namespace Renderer
 
         string previousString;
         
-        bool _Visible;
+        bool _Visible = true;
         public bool Visible 
         { 
             get { return _Visible; } 

@@ -9,7 +9,7 @@ namespace Renderer
         public string text { get {return _text;} set {_text = value; ReRender();}}
         private string previousString;
 
-        bool _Visible;
+        bool _Visible = true;
         public bool Visible 
         { 
             get { return _Visible; } 

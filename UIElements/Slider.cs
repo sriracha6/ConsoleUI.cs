@@ -11,7 +11,7 @@ namespace Renderer
         public int width;
         public int step;
 
-        bool _Visible;
+        bool _Visible = true;
         public bool Visible 
         { 
             get { return _Visible; } 

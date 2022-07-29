@@ -14,7 +14,7 @@ namespace Renderer
         public string leftSide = "[";
         public string rightSide = "]";
 
-        bool _Visible;
+        bool _Visible = true;
         public bool Visible 
         { 
             get { return _Visible; } 
@@ -27,6 +27,9 @@ namespace Renderer
                     DeRender();
             } 
         }
+
+        public delegate void OnValueChange();
+        public event OnValueChange OnValueChangeEvent;
 
         string previousString;
 
@@ -109,6 +112,7 @@ namespace Renderer
                 text += character.KeyChar;
                 OnRightArrow();
             }
+            if(OnValueChangeEvent != null) OnValueChangeEvent();
             ReRender();
         }
     }

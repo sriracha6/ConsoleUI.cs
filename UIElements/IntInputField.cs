@@ -16,7 +16,7 @@ namespace Renderer
         public string rightSide = "]";
         public string upDown = "^v";
 
-        bool _Visible;
+        bool _Visible = true;
         public bool Visible 
         { 
             get { return _Visible; } 
@@ -29,6 +29,9 @@ namespace Renderer
                     DeRender();
             } 
         }
+
+        public delegate void OnValueChange();
+        public event OnValueChange OnValueChangeEvent;
 
         string previousString;
 
@@ -109,6 +112,7 @@ namespace Renderer
                 else
                     text = int.Parse(text.ToString().Remove(text.ToString().Length-1, 1));
                 OnLeftArrow();
+                if(OnValueChangeEvent != null) OnValueChangeEvent();
             }
             else
             {
@@ -117,10 +121,12 @@ namespace Renderer
                 {
                     text = int.Parse((text.ToString() + character.KeyChar.ToString()));
                     OnRightArrow();
+                    if(OnValueChangeEvent != null) OnValueChangeEvent();
                 }
                 else if(character.Key == ConsoleKey.OemMinus)
                 {
                     text = -text;
+                    if(OnValueChangeEvent != null) OnValueChangeEvent();
                 }
             }
             Clamp();

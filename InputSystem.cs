@@ -4,7 +4,7 @@ namespace Renderer
 {
     public static class Input
     {
-        public static IInputable currentItem {get; private set;}
+        public static IInteractive currentItem {get; private set;}
         public static int currentItemIndex {get; private set;}
         public static ConsoleKeyInfo currentKey {get; private set;}
         /// <summary>
@@ -39,32 +39,32 @@ namespace Renderer
                 }
                 else if(key.Key == ConsoleKey.Enter)
                 {
-                    if(currentItem != null)
+                    if(currentItem != null && currentItem.Visible)
                         currentItem.OnClick();
                 }
                 else if(key.Key == ConsoleKey.UpArrow)
                 {
-                    if(currentItem != null)
+                    if(currentItem != null && currentItem.Visible)
                         currentItem.OnUpArrow();
                 }
                 else if(key.Key == ConsoleKey.DownArrow)
                 {
-                    if(currentItem != null)
+                    if(currentItem != null && currentItem.Visible)
                         currentItem.OnDownArrow();
                 }
                 else if(key.Key == ConsoleKey.LeftArrow)
                 {
-                    if(currentItem != null)
+                    if(currentItem != null && currentItem.Visible)
                         currentItem.OnLeftArrow();
                 }
                 else if(key.Key == ConsoleKey.RightArrow)
                 {
-                    if(currentItem != null)
+                    if(currentItem != null && currentItem.Visible)
                         currentItem.OnRightArrow();
                 }
                 else
                 {
-                    if(currentItem != null)
+                    if(currentItem != null && currentItem.Visible)
                         currentItem.OnTextInput(key);
                 }
             }

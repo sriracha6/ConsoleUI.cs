@@ -18,7 +18,7 @@ namespace Renderer
         public delegate void OnValueChange();
         public event OnValueChange OnValueChangeEvent;
 
-        bool _Visible;
+        bool _Visible = true;
         public bool Visible 
         { 
             get { return _Visible; } 
