@@ -10,7 +10,7 @@ Elements
     [X] OptionGroup
     [X] TextArea
     [X] ListView
-    [ ] Image
+    [X] Image
     [X] Vertical Scrollbar
     [X] Horizontal Scrollbar
     [X] GroupBox
@@ -36,6 +36,7 @@ Functionality
     [ ] Placeholders in text boxes
     [ ] StyleInfo (new Button(text, styleInfo))
     [ ] TextArea selection (shift+arrows to select, copy/cut/paste)
+    [ ] TextBox/IntTextBox cursor
 
 [ ] Make every property public, rerender on change
 [ ] Ansi string class. IE new AnsiString("Hello") + " World!".Color(ConsoleColor.Green) + " Bold".Bold();
