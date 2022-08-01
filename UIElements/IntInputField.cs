@@ -81,7 +81,10 @@ namespace Renderer
 
         void Clamp() { if(text > maxValue) text = maxValue;
             if(text < minValue) text = minValue;}
-        public void OnHover() { }
+        public void OnHover() 
+        {
+            Console.CursorVisible = true;
+        }
         public void OnClick() { }
         public void OnUpArrow() { text++; Clamp(); ReRender(); }
         public void OnDownArrow() { text--; Clamp(); ReRender(); }
@@ -101,7 +104,10 @@ namespace Renderer
                 ReRender();
             }
         }
-        public void OnHoverLeave() { }
+        public void OnHoverLeave() 
+        {
+            Console.CursorVisible = false;
+        }
 
         public void OnTextInput(ConsoleKeyInfo character) 
         {

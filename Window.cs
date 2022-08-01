@@ -22,6 +22,7 @@ namespace Renderer
 
         public static void Init(int consoleWidth, int consoleHeight)
         {
+            Console.CursorVisible = false;
             width = consoleWidth;
             height = consoleHeight;
             Console.SetWindowSize(width, height);

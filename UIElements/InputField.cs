@@ -74,7 +74,10 @@ namespace Renderer
             Render();
         }
 
-        public void OnHover() { }
+        public void OnHover() 
+        {
+            Console.CursorVisible = true;
+        }
         public void OnClick() { }
         public void OnUpArrow() { }
         public void OnDownArrow() { }
@@ -94,7 +97,10 @@ namespace Renderer
                 ReRender();
             }
         }
-        public void OnHoverLeave() { }
+        public void OnHoverLeave() 
+        {
+            Console.CursorVisible = false;
+        }
 
         public void OnTextInput(ConsoleKeyInfo character) 
         {

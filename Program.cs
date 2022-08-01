@@ -28,10 +28,13 @@ namespace Renderer
             VerticalScrollBar vscroller = new VerticalScrollBar(0, 10);
             BigTextBox listView = new BigTextBox("This text is too big for this box. So, a scroller will appear and you can scroll it. This UI element is a wrapper of another one that can display single lines.", 10, 5);
             SelectListView sView = new SelectListView(new List<string>() {"This", "is", "a", "selectable", "list", "view", "It", "is", "hard", "to", "control", "imo"}, 10, 5, ConsoleColor.DarkGray, true);
-            DropdownMenu ddMenu = new DropdownMenu(new List<string> {"select","one","of","us","please"}, 10, 4, ConsoleColor.DarkGray);
+            HorizontalScrollBar hscroller = new HorizontalScrollBar(0,10);
+
+            TextArea ta = new TextArea("This. is a textarea. \nIt probably took a while for me to make. \nThis particular one has a text length limit of 1000\nHave fun typing away.\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest", 10,10, 1000, new HorizontalScrollBar(0, 10), new VerticalScrollBar(0,10));
+
 
             Renderer.Render(gBox, new Vector2(0,0));
-            Renderer.Render(ddMenu, new Vector2(30,20));
+            Renderer.Render(ta, new Vector2(50, 5));
             Renderer.Render(s, new Vector2(21, 0));
             Renderer.Render(p, new Vector2(2, 1));
             Renderer.Render(cb, new Vector2(4, 2));

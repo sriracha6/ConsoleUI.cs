@@ -8,12 +8,11 @@ Elements
     [x] Input Field
     [X] Int Input Field
     [X] OptionGroup
-    [ ] TextArea
+    [X] TextArea
     [X] ListView
     [ ] Image
     [X] Vertical Scrollbar
-    [ ] Horizontal Scrollbar
-    [ ] DropdownMenu - selectlistview hidden/shjown
+    [X] Horizontal Scrollbar
     [X] GroupBox
     [X] BigTextBox
     [X] SelectListView
@@ -36,6 +35,7 @@ Functionality
     [ ] OnHovers (bold, not bgcolor)
     [ ] Placeholders in text boxes
     [ ] StyleInfo (new Button(text, styleInfo))
+    [ ] TextArea selection (shift+arrows to select, copy/cut/paste)
 
 [ ] Make every property public, rerender on change
 [ ] Ansi string class. IE new AnsiString("Hello") + " World!".Color(ConsoleColor.Green) + " Bold".Bold();
