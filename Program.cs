@@ -34,7 +34,6 @@ namespace Renderer
 
 
             Renderer.Render(gBox, new Vector2(0,0));
-            Renderer.Render(ta, new Vector2(50, 5));
             Renderer.Render(s, new Vector2(21, 0));
             Renderer.Render(p, new Vector2(2, 1));
             Renderer.Render(cb, new Vector2(4, 2));
@@ -46,6 +45,7 @@ namespace Renderer
             Renderer.Render(intinputfield, new Vector2(15,16));
             Renderer.Render(listView, new Vector2(30,6));
             Renderer.Render(sView, new Vector2(30,13));
+            Renderer.Render(ta, new Vector2(50, 5));
         }
     }
 }

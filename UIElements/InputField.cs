@@ -58,6 +58,7 @@ namespace Renderer
             }
             string s = leftSide + text.Substring(scrollLeft, amount) + new string('.', width-amount) + rightSide;
             Console.Write(s);
+            Console.SetCursorPosition(Position.x + scrollLeft, Position.y);
             previousString = UIElement.ParsePreviousString(s);
         }
 
