@@ -24,7 +24,8 @@ namespace Renderer
         public int Width;
         public int Height;
 
-        (int x, int y) previousString;
+        int previousStringX;
+        int previousStringY;
 
         public Image(Pixel[,] pixels, int width, int height)
         {
@@ -55,24 +56,25 @@ namespace Renderer
                 {
                     Console.SetCursorPosition((int)Position.x+i, (int)Position.y+j);
                     Console.ForegroundColor = Pixels[i, j].Color;
-                    Console.Write(Pixels[i, j].Character);
+                    Console.Write(Pixels[i, j].Char);
                 }
             }
-            previousString = (Width, Height);
+            previousStringX = Width;//(Width, Height);
+            previousStringY = Height;
         }
 
         public void DeRender()
         {
             Console.SetCursorPosition((int)Position.x, (int)Position.y);
             Console.ResetColor();
-            for(int i = 0; i < previousString.x; i++)
+            for(int i = 0; i < previousStringX; i++)
             {
-                for(int j = 0; j < previousString.y; j++)
+                for(int j = 0; j < previousStringY; j++)
                 {
                     Console.Write(' ');
                 }
             }
-            previousString = (0, 0);
+            previousStringX = 0; previousStringY = 0;
         }
 
         public void ReRender()

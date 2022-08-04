@@ -23,7 +23,6 @@ Elements
     [X] Slider
     [ ] Table
     [X] Pixel
-    [ ] Tooltip?
 
 Functionality
     [x] Renderer/IRenderable
