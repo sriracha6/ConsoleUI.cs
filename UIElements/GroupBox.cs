@@ -8,7 +8,8 @@ namespace Renderer
         public Panel Panel;
         public Vector2 Position { get; set; }
 
-        bool _Visible = true;
+                bool _Visible = true;
+        public bool Selected { get; set; }
         public bool Visible 
         { 
             get { return _Visible; } 

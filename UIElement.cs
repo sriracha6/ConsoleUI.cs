@@ -14,5 +14,18 @@ namespace Renderer
                     asd += " ";
             return asd;
         }
+
+        public static int PercentWidth(int percent)
+        {
+            return (percent/100) * Console.WindowWidth; 
+        }
+
+        public static int PercentHeight(int percent)
+        {
+            return (percent/100) * Console.WindowHeight; 
+        }
+
+        public const string START_BOLD = "\x1b[1m";
+        public const string END_BOLD = "\x1b[0m";
     }
 }

@@ -8,6 +8,8 @@ namespace Renderer
         public static int width;
         public static int height;
 
+        public static ConsoleColor SelectedColor;
+
         static void FixWindowSize()
         {
             for(;;)
@@ -20,11 +22,12 @@ namespace Renderer
             }
         }
 
-        public static void Init(int consoleWidth, int consoleHeight)
+        public static void Init(int consoleWidth, int consoleHeight, ConsoleColor selectedColor)
         {
             Console.CursorVisible = false;
             width = consoleWidth;
             height = consoleHeight;
+            SelectedColor = selectedColor;
             Console.SetWindowSize(width, height);
             Console.SetBufferSize(width, height);
 

@@ -11,7 +11,8 @@ namespace Renderer
         public int width;
         public int step;
 
-        bool _Visible = true;
+                bool _Visible = true;
+        public bool Selected { get; set; }
         public bool Visible 
         { 
             get { return _Visible; } 
@@ -57,9 +58,11 @@ namespace Renderer
 
         public void Render()
         {
+            if(Selected) Console.BackgroundColor = Window.SelectedColor;
             string s = leftSide + new string(' ', value/step) + slider + new string(' ',width-value) + rightSide;
             Console.Write(s);
             previousString = s.Length;
+            if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
 
         public void DeRender()

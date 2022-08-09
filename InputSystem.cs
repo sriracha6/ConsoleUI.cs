@@ -20,7 +20,12 @@ namespace Renderer
                 currentKey = key;
                 if(key.Key == ConsoleKey.Tab && pressShift)
                 {
-                    if(currentItem != null) currentItem.OnHoverLeave();
+                    if(currentItem != null) 
+                    { 
+                        currentItem.OnHoverLeave();
+                        currentItem.Selected = false;
+                        currentItem.ReRender(); 
+                    } 
                     if(currentItemIndex > 0)
                         currentItemIndex--;
                     else
@@ -28,14 +33,24 @@ namespace Renderer
                     var pos = Renderer.inputItemsPositions[currentItemIndex];
                     Console.SetCursorPosition(pos.x, pos.y);
                     currentItem = Renderer.inputItemsOrdered[currentItemIndex];
+                    currentItem.Selected = true;
                     currentItem.OnHover();
+                    currentItem.ReRender();
                 }
                 else if(key.Key == ConsoleKey.Tab && !pressShift && currentItemIndex+1 < Renderer.inputItemsOrdered.Count)
                 {
-                    if(currentItem != null) currentItem.OnHoverLeave();
+                    if(currentItem != null) 
+                    { 
+                        currentItem.OnHoverLeave();
+                        currentItem.Selected = false;
+                        currentItem.ReRender(); 
+                    } 
+
                     currentItemIndex++;
                     currentItem = Renderer.inputItemsOrdered[currentItemIndex];
+                    currentItem.Selected = true;
                     currentItem.OnHover();
+                    currentItem.ReRender();
                 }
                 else if(key.Key == ConsoleKey.Enter)
                 {

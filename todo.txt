@@ -32,7 +32,7 @@ Functionality
     [X] Derive from UIElement
     [ ] Animations
     [ ] OnHovers (bold, not bgcolor)
-    [ ] Placeholders in text boxes
+    [X] Placeholders in text boxes
     [ ] StyleInfo (new Button(text, styleInfo))
     [ ] TextArea selection (shift+arrows to select, copy/cut/paste)
     [X] TextBox/IntTextBox cursor

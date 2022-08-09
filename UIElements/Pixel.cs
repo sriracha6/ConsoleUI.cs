@@ -9,7 +9,8 @@ namespace Renderer
         public char? Char;
         public ConsoleColor Color;
 
-        bool _Visible = true;
+                bool _Visible = true;
+        public bool Selected { get; set; }
         public bool Visible 
         { 
             get { return _Visible; } 

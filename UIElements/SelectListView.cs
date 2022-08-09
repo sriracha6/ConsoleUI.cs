@@ -29,7 +29,8 @@ namespace Renderer
             }
         }
 
-        bool _Visible = true;
+                bool _Visible = true;
+        public bool Selected { get; set; }
         public bool Visible 
         { 
             get { return _Visible; } 
@@ -86,6 +87,7 @@ namespace Renderer
 
         public void Render()
         {
+            if(Selected) Console.BackgroundColor = Window.SelectedColor;
             if(scrollBar == null)
             {
                 scrollBar = new VerticalScrollBar(0, _Height);
@@ -109,6 +111,7 @@ namespace Renderer
                 Console.ResetColor();
                 y++;
             }
+            if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
 
         public void DeRender()

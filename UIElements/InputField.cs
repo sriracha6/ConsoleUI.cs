@@ -14,7 +14,10 @@ namespace Renderer
         public string leftSide = "[";
         public string rightSide = "]";
 
-        bool _Visible = true;
+        public string PlaceHolder;
+
+                bool _Visible = true;
+        public bool Selected { get; set; }
         public bool Visible 
         { 
             get { return _Visible; } 
@@ -33,33 +36,40 @@ namespace Renderer
 
         string previousString;
 
-        public InputField(string text, int width, int maxTextLength)
+        public InputField(string text, int width, int maxTextLength, string placeholder)
         {
             this.text = text;
             this.width = width;
             this.maxTextLength = maxTextLength;
+            this.PlaceHolder = placeholder;
         }
 
-        public InputField(string text, int width, int maxTextLength, string leftside, string rightside)
+        public InputField(string text, int width, int maxTextLength, string placeholder, string leftside, string rightside)
         {
             this.text = text;
             this.width = width;
             this.maxTextLength = maxTextLength;
             this.leftSide = leftside;
             this.rightSide = rightside;
+            this.PlaceHolder = placeholder;
         }
-
+        // i quit. its been way too long. why is it when i press backspace and there is no text, it deletes the leftSide
         public void Render()
         {
+            if(Selected) Console.BackgroundColor = Window.SelectedColor;
             int amount = width;
             if(width+scrollLeft > text.Length)
             {
                 amount = text.Length-scrollLeft;
             }
-            string s = leftSide + text.Substring(scrollLeft, amount) + new string('.', width-amount) + rightSide;
+            string s;
+            if(text.Length > 0) s = leftSide + text.Substring(scrollLeft, amount) + new string('.', width-amount) + rightSide;
+            else s = leftSide + PlaceHolder.Substring(scrollLeft, amount) + new string('.', width-amount) + rightSide;
+            
             Console.Write(s);
-            Console.SetCursorPosition(Position.x + scrollLeft, Position.y);
-            previousString = UIElement.ParsePreviousString(s);
+            Console.SetCursorPosition(scrollLeft == 0 && text.Length <= width ? Position.x + text.Length + 1: Position.x + width + 1, Position.y);
+            previousString = new string(' ', s.Length);
+            if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
 
         public void DeRender()
@@ -84,7 +94,7 @@ namespace Renderer
         public void OnDownArrow() { }
         public void OnLeftArrow() 
         {
-            if (scrollLeft > 0)
+            if (scrollLeft - 1 >= 0)
             {
                 scrollLeft--;
                 ReRender();
@@ -105,17 +115,14 @@ namespace Renderer
 
         public void OnTextInput(ConsoleKeyInfo character) 
         {
-            if(text.Length+1 > maxTextLength) return;
             if(character.Key == ConsoleKey.Backspace && text.Length-1 >= 0)
             {
-                if(text.Length == 1)
-                    text = "";
-                else
-                    text = text.Remove(text.Length-1, 1);
+                text = text.Remove(text.Length-1, 1);
                 OnLeftArrow();
             }
             else
             {
+                if(text.Length+1 > maxTextLength) return;
                 text += character.KeyChar;
                 OnRightArrow();
             }

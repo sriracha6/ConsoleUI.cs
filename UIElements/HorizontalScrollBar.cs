@@ -9,7 +9,8 @@ namespace Renderer
         public int Progress { get { return _Progress; } set { _Progress = value; ReRender(); } }
         public int Width;
 
-        bool _Visible = true;
+                bool _Visible = true;
+        public bool Selected { get; set; }
         public bool Visible 
         { 
             get { return _Visible; } 
@@ -46,6 +47,7 @@ namespace Renderer
 
         public void Render()
         {
+            if(Selected) Console.BackgroundColor = Window.SelectedColor;
             Console.Write(ends);
             for(int i = 0; i < Width; i++)
             {
@@ -59,6 +61,7 @@ namespace Renderer
                 previousString++;
             }
             Console.Write(ends);
+            if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
 
         public void DeRender()

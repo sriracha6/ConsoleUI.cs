@@ -18,7 +18,8 @@ namespace Renderer
         public delegate void OnValueChange();
         public event OnValueChange OnValueChangeEvent;
 
-        bool _Visible = true;
+                bool _Visible = true;
+        public bool Selected { get; set; }
         public bool Visible 
         { 
             get { return _Visible; } 
@@ -45,6 +46,7 @@ namespace Renderer
 
         public void Render()
         {
+            if(Selected) Console.BackgroundColor = Window.SelectedColor;
             for (int i = 0; i < Options.Count; i++)
             {
                 if(selectedOption == i)
@@ -59,6 +61,7 @@ namespace Renderer
                 Console.SetCursorPosition(Position.x, Position.y+i+1);
                 previousString += UIElement.ParsePreviousString(Options[i]+"\n");
             }
+            if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
 
         public void DeRender()

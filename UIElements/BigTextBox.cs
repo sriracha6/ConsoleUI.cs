@@ -10,7 +10,8 @@ namespace Renderer
         private string _text;
         public string text { get {return _text;} set {_text = value; SetOptions(); ReRender();}}
 
-        bool _Visible = true;
+                bool _Visible = true;
+        public bool Selected { get; set; }
         public bool Visible 
         { 
             get { return _Visible; } 
@@ -65,8 +66,10 @@ namespace Renderer
 
         public void Render()
         {
+            if(Selected) Console.BackgroundColor = Window.SelectedColor;
             listBox.Position = Position;
             listBox.ReRender();
+            if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
 
         public void DeRender()

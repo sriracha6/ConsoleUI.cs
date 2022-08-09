@@ -30,7 +30,8 @@ namespace Renderer
         public HorizontalScrollBar hscroll;
         public VerticalScrollBar vscroll;
 
-        bool _Visible = true;
+                bool _Visible = true;
+        public bool Selected { get; set; }
         public bool Visible 
         { 
             get { return _Visible; } 
@@ -64,6 +65,7 @@ namespace Renderer
 
         public void Render()
         {
+            if(Selected) Console.BackgroundColor = Window.SelectedColor;
             vscroll.Position = new Vector2(Position.x+Width, Position.y);
             hscroll.Position = new Vector2(Position.x, Position.y+Height);
             
@@ -89,6 +91,7 @@ namespace Renderer
 
             previousStringW = Width;
             previousStringH = Height;
+            if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
 
         public void DeRender()

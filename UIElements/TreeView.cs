@@ -6,7 +6,8 @@ namespace Renderer
     public class TreeView : IInteractive
     {
         public Vector2 Position { get; set; }
-        bool _Visible = true;
+                bool _Visible = true;
+        public bool Selected { get; set; }
         public bool Visible 
         { 
             get { return _Visible; } 
@@ -27,7 +28,7 @@ namespace Renderer
         string Closed = ">";
         string Tab = "  ";
 
-        string previousString;
+        string previousString = "";
 
         public TreeView(string text, List<TreeView> children)
         {
@@ -52,22 +53,25 @@ namespace Renderer
 
         public void Render()
         {
+            if(Selected) Console.BackgroundColor = Window.SelectedColor;
             string s = (Expanded ? Open : Closed)+ " " + Text;
             Console.Write(s);
             previousString = UIElement.ParsePreviousString(s);
             if(!Expanded) return;
             for(int i = 0; i < Children.Count; i++)
             {
-                Console.SetCursorPosition(Position.x + Tab.Length, Position.y + i + 1);
-                Children[i].Render();
-                previousString += UIElement.ParsePreviousString(Children[i].previousString);
+                Children[i].Position = new Vector2(Position.x + Tab.Length, Position.y + i + 1);
+                Children[i].ReRender();
+                previousString += new string(' ', Tab.Length);
+                previousString += UIElement.ParsePreviousString(Children[i].Text);
             }
+            if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
 
         public void DeRender()
         {
             Console.SetCursorPosition((int)Position.x, (int)Position.y);
-            int nlcount = 0;
+            int nlcount = 1;
             for(int i = 0; i < previousString.Length; i++)
             {
                 if(previousString[i] == ' ')
@@ -79,6 +83,10 @@ namespace Renderer
                 }
             }
             previousString = "";
+            
+            if(Children.Count > 0)
+                for(int i = 0; i < Children.Count; i++)
+                    Children[i].DeRender();
         }
 
         public void ReRender()

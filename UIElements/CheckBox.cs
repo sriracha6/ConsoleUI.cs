@@ -12,7 +12,8 @@ namespace Renderer
         public delegate void OnValueChangeDelegate();
         public event OnValueChangeDelegate OnValueChange;
         
-        bool _Visible = true;
+                bool _Visible = true;
+        public bool Selected { get; set; }
         public bool Visible 
         { 
             get { return _Visible; } 
@@ -63,9 +64,11 @@ namespace Renderer
 
         public void Render()
         {
+            if(Selected) Console.BackgroundColor = Window.SelectedColor;
             string s = leftSide + (IsChecked ? checkedC : " ") + rightSide + " " + Text;
             previousString = UIElement.ParsePreviousString(s);
             Console.Write(s);
+            if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
         public void DeRender()
         {

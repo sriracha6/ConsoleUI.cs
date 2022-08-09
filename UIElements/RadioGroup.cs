@@ -17,7 +17,8 @@ namespace Renderer
 
         string previousString = "";
 
-        bool _Visible = true;
+                bool _Visible = true;
+        public bool Selected { get; set; }
         public bool Visible 
         { 
             get { return _Visible; } 
@@ -49,6 +50,7 @@ namespace Renderer
 
         public void Render()
         {
+            if(Selected) Console.BackgroundColor = Window.SelectedColor;
             for (int i = 0; i < Options.Count; i++)
             {
                 string s = leftSide + (selectedOption == i ? selected : " ") + rightSide + " " + Options[i];
@@ -56,6 +58,7 @@ namespace Renderer
                 Console.SetCursorPosition(Position.x, Position.y+i+1);
                 previousString += UIElement.ParsePreviousString(s+"\n");
             }
+            if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
 
         public void DeRender()

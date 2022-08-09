@@ -4,6 +4,7 @@ namespace Renderer
 {
     public interface IInputable
     {
+        bool Selected { get; set; }
         void OnHover();
         void OnClick();
         void OnUpArrow();

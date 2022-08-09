@@ -12,11 +12,14 @@ namespace Renderer
 
         int scrollLeft;
 
+        public string PlaceHolder;
+
         public string leftSide = "[";
         public string rightSide = "]";
         public string upDown = "^v";
 
-        bool _Visible = true;
+                bool _Visible = true;
+        public bool Selected { get; set; }
         public bool Visible 
         { 
             get { return _Visible; } 
@@ -35,15 +38,16 @@ namespace Renderer
 
         string previousString;
 
-        public IntInputField(int text, int width, int maxValue, int minValue)
+        public IntInputField(int text, int width, int maxValue, int minValue, string placeholder)
         {
             this.text = text;
             this.width = width;
             this.maxValue = maxValue;
             this.minValue = minValue;
+            this.PlaceHolder = placeholder;
         }
 
-        public IntInputField(int text, int width, int maxValue, int minValue, string leftside, string rightside, string upDown)
+        public IntInputField(int text, int width, int maxValue, int minValue, string placeholder, string leftside, string rightside, string upDown)
         {
             this.text = text;
             this.width = width;
@@ -52,19 +56,25 @@ namespace Renderer
             this.leftSide = leftside;
             this.rightSide = rightside;
             this.upDown = upDown;
+            this.PlaceHolder = placeholder;
         }
 
         public void Render()
         {
+            if(Selected) Console.BackgroundColor = Window.SelectedColor;
             int amount = width;
             if(width+scrollLeft > text.ToString().Length)
             {
                 amount = text.ToString().Length-scrollLeft;
             }
-            string s = leftSide + text.ToString().Substring(scrollLeft, amount) + new string('.', width-amount) + rightSide + upDown;
+            string s;
+            if(text.ToString().Length > 0) s = leftSide + text.ToString().Substring(scrollLeft, amount) + new string('.', width-amount) + rightSide + upDown;
+            else s = leftSide + PlaceHolder.ToString().Substring(scrollLeft, amount) + new string('.', width-amount) + rightSide + upDown;
+            
             Console.Write(s);
-            Console.SetCursorPosition(Position.x + scrollLeft, Position.y);
+            Console.SetCursorPosition(scrollLeft == 0 && text.ToString().Length <= width ? Position.x + text.ToString().Length + 1 : Position.x + width + 1, Position.y);
             previousString = UIElement.ParsePreviousString(s);
+            if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
 
         public void DeRender()
