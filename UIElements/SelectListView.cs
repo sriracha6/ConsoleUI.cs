@@ -88,12 +88,14 @@ namespace Renderer
 
         public void Render()
         {
-            scrollBar = new VerticalScrollBar(0, _Height);
-            if(!outieScrollbars)
-                scrollBar.Position = new Vector2(Position.x + Width - 1, Position.y);
-            else
-                scrollBar.Position = new Vector2(Position.x + Width, Position.y);
-            
+            if(scrollBar == null)
+            {
+                scrollBar = new VerticalScrollBar(0, _Height);
+                if(!outieScrollbars)
+                    scrollBar.Position = new Vector2(Position.x + Width - 1, Position.y);
+                else
+                    scrollBar.Position = new Vector2(Position.x + Width, Position.y);
+            }
             scrollBar.ReRender();
 
             if(Selected)
@@ -116,7 +118,12 @@ namespace Renderer
                     Console.BackgroundColor = selectedColor; 
                 Console.SetCursorPosition(Position.x, Position.y + y);
                 Console.Write(options[i]);
-                Console.ResetColor();
+
+                if(Selected) Console.BackgroundColor = Window.SelectedColor;
+                else Console.ResetColor();
+
+                if(i == progress+Height) Console.Write(new string(' ', Width-options[i].Length));
+                //Console.ResetColor();
                 y++;
             }
             if(Selected) Console.BackgroundColor = ConsoleColor.Black;

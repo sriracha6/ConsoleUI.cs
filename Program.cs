@@ -13,7 +13,7 @@ namespace Renderer
 
             Window.Init(120,30, ConsoleColor.DarkBlue);
 
-            Label s = new Label("Hello, World!");
+            Label s = new Label("Hello, World! " + "AnsiString ".Bold() + "Test!".Color(System.Drawing.Color.CornflowerBlue));
             ProgressBar p = new ProgressBar(3, 7);
             CheckBox cb = new CheckBox("Check me!", false);
             Button button = new Button("Click me!", delegate {clicks++;s.text = "You clicked the button "+clicks+" times!";});

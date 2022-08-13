@@ -38,4 +38,4 @@ Functionality
     [X] TextBox/IntTextBox cursor
 
 [ ] Make every property public, rerender on change
-[ ] Ansi string class. IE new AnsiString("Hello") + " World!".Color(ConsoleColor.Green) + " Bold".Bold();
+[X] Ansi string class. IE new AnsiString("Hello") + " World!".Color(ConsoleColor.Green) + " Bold".Bold();

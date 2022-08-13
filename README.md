@@ -1,5 +1,7 @@
-# ConsoleUI.cs v0.1
+# ConsoleUI.cs v0.8
 A simple, extensible Console UI library in C-Sharp.
+
+![Screenshot](screenshot.png)
 
 ## Example
 ```csharp
@@ -42,12 +44,12 @@ Functionality
     [ ] Color
     [X] Derive from UIElement
     [ ] Animations
-    [ ] OnHovers (bold, not bgcolor)
+    [X] OnHovers (bold, not bgcolor)
     [X] Placeholders in text boxes
     [ ] StyleInfo (new Button(text, styleInfo))
     [ ] TextArea selection (shift+arrows to select, copy/cut/paste)
     [X] TextBox/IntTextBox cursor
 
 [ ] Make every property public, rerender on change
-[ ] Ansi string class. IE new AnsiString("Hello") + " World!".Color(ConsoleColor.Green) + " Bold".Bold();
+[X] Ansi string class. IE new AnsiString("Hello") + " World!".Color(ConsoleColor.Green) + " Bold".Bold();
 ```

@@ -74,12 +74,14 @@ namespace Renderer
 
         public void Render()
         {
-            scrollBar = new VerticalScrollBar(0, _Height);
-            if(!outieScrollbars)
-                scrollBar.Position = new Vector2(Position.x + Width - 1, Position.y);
-            else
-                scrollBar.Position = new Vector2(Position.x + Width, Position.y);
-            
+            if(scrollBar == null)
+            {
+                scrollBar = new VerticalScrollBar(0, _Height);
+                if(!outieScrollbars)
+                    scrollBar.Position = new Vector2(Position.x + Width - 1, Position.y);
+                else
+                    scrollBar.Position = new Vector2(Position.x + Width, Position.y);
+            }
             scrollBar.ReRender();
             
             if(Selected)
