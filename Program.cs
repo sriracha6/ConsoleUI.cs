@@ -35,7 +35,7 @@ namespace Renderer
 
             Renderer.Render(gBox, new Vector2(0,0));
             Renderer.Render(s, new Vector2(21, 0));
-            Renderer.Render(tv, new Vector2(60, 0));
+            //Renderer.Render(tv, new Vector2(60, 0));
             Renderer.Render(p, new Vector2(2, 1));
             Renderer.Render(cb, new Vector2(4, 2));
             Renderer.Render(button, new Vector2(6, 3));
