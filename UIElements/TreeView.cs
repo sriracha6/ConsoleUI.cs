@@ -3,6 +3,21 @@ using System.Collections.Generic;
 
 namespace Renderer
 {
+    class TreeItem {
+        string Text;
+        public List<TreeItem> Children;
+
+        public TreeItem(string text, List<TreeItem> children) {
+            Text = text;
+            Children = children;
+        }
+
+        public TreeItem(string text) {
+            Text = text;
+            Children = new List<TreeItem>();
+        }
+         
+    }
     public class TreeView : IInteractive
     {
         public Vector2 Position { get; set; }

@@ -45,8 +45,8 @@ namespace Renderer
             if(Selected) Console.BackgroundColor = Window.SelectedColor;
             string s = leftSide + " " + Text + " " + rightSide;
             previousString = UIElement.ParsePreviousString(s);
-            if(Selected) Console.BackgroundColor = ConsoleColor.Black;
             Console.Write(s);
+            if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
         
         public void DeRender()

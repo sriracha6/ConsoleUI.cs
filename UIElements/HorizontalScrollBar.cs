@@ -47,7 +47,7 @@ namespace Renderer
 
         public void Render()
         {
-            if(Selected) Console.BackgroundColor = Window.SelectedColor;
+            //if(Selected) Console.BackgroundColor = Window.SelectedColor;
             Console.Write(ends);
             for(int i = 0; i < Width; i++)
             {
@@ -61,7 +61,7 @@ namespace Renderer
                 previousString++;
             }
             Console.Write(ends);
-            if(Selected) Console.BackgroundColor = ConsoleColor.Black;
+            //if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
 
         public void DeRender()

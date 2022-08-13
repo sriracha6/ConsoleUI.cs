@@ -84,13 +84,13 @@ namespace Renderer
             Render();
         }
 
-        public void OnHover() { listBox.OnHover(); }
+        public void OnHover() { listBox.OnHover(); listBox.Selected = true; }
         public void OnClick() { listBox.OnClick(); }
         public void OnUpArrow() { listBox.OnUpArrow(); }
         public void OnDownArrow() { listBox.OnDownArrow(); }
         public void OnLeftArrow() { listBox.OnLeftArrow(); }
         public void OnRightArrow() { listBox.OnRightArrow(); }
-        public void OnHoverLeave() { listBox.OnHoverLeave(); }
+        public void OnHoverLeave() { listBox.OnHoverLeave(); listBox.Selected = false; }
 
         public void OnTextInput(ConsoleKeyInfo character) { listBox.OnTextInput(character); }
     }

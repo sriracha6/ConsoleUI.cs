@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Renderer
 {
@@ -87,17 +88,24 @@ namespace Renderer
 
         public void Render()
         {
-            if(Selected) Console.BackgroundColor = Window.SelectedColor;
-            if(scrollBar == null)
-            {
-                scrollBar = new VerticalScrollBar(0, _Height);
-                if(!outieScrollbars)
-                    scrollBar.Position = new Vector2(Position.x + Width - 1, Position.y);
-                else
-                    scrollBar.Position = new Vector2(Position.x + Width, Position.y);
-                scrollBar.Render();
-            }
+            scrollBar = new VerticalScrollBar(0, _Height);
+            if(!outieScrollbars)
+                scrollBar.Position = new Vector2(Position.x + Width - 1, Position.y);
+            else
+                scrollBar.Position = new Vector2(Position.x + Width, Position.y);
+            
             scrollBar.ReRender();
+
+            if(Selected)
+            {
+                Console.BackgroundColor = Window.SelectedColor;
+                Console.SetCursorPosition(Position.x, Position.y);
+                for(int i = 0; i < Height+1; i++)
+                {
+                    Console.Write(new string(' ', Width));
+                    Console.SetCursorPosition(Position.x, Position.y + i);
+                }
+            }
 
             int y = 0;
             for (int i = progress; i < progress+Height+1; i++)
@@ -156,6 +164,8 @@ namespace Renderer
             }
             else
                 scrollBar.Progress = 0;
+            if(hoveredItem-1 > -1)
+                hoveredItem--;
             ReRender();
         }
         public void OnDownArrow() 
@@ -175,19 +185,14 @@ namespace Renderer
             }
             else
                 scrollBar.Progress = Height-1;
-            ReRender();
-        }
-        public void OnLeftArrow() 
-        {
-            if(hoveredItem-1 > -1)
-                hoveredItem--;
-        }
-        public void OnRightArrow() 
-        {
             if(hoveredItem+1 < options.Count)
                 hoveredItem++;
+            ReRender();
         }
-        public void OnHoverLeave() { }
+        public void OnLeftArrow() { }
+        public void OnRightArrow() { }
+
+        public void OnHoverLeave() {  }
 
         public void OnTextInput(ConsoleKeyInfo character) { }
     }

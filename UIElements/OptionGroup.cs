@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Renderer
@@ -11,7 +12,8 @@ namespace Renderer
         
         int hoveredOption = -1;
 
-        string previousString = "";
+        int previousStringH;
+        int previousStringW;
 
         ConsoleColor selectedColor = ConsoleColor.DarkGray;
 
@@ -46,39 +48,49 @@ namespace Renderer
 
         public void Render()
         {
-            if(Selected) Console.BackgroundColor = Window.SelectedColor;
+            if(Selected)
+            { 
+                Console.BackgroundColor = Window.SelectedColor;
+/*
+                for(int i = 0; i < Options.Count; i++)
+                {
+                    for(int j = 0; j < Options.OrderBy(x=>x.Length).First().Length; j++)
+                    {
+                        Console.Write(' ');
+                    }
+                }
+                Console.SetCursorPosition(Position.x, Position.y);*/
+            }
             for (int i = 0; i < Options.Count; i++)
             {
                 if(selectedOption == i)
                 {
                     Console.BackgroundColor = selectedColor;
                     Console.Write(Options[i]+"\n");
-                    Console.ResetColor();
+                    if(!Selected) Console.ResetColor();
+                    else Console.BackgroundColor = Window.SelectedColor;
                 }
                 else
                     Console.Write(Options[i]+"\n");
                 
                 Console.SetCursorPosition(Position.x, Position.y+i+1);
-                previousString += UIElement.ParsePreviousString(Options[i]+"\n");
             }
+            previousStringW = Options.OrderBy(x=>x.Length).First().Length;
+            previousStringH = Options.Count;
             if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
 
         public void DeRender()
         {
             Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            Console.ResetColor();
             int nlcount = 0;
-            for(int i = 0; i < previousString.Length; i++)
+            for(int i = 0; i < previousStringH; i++)
             {
-                if(previousString[i] == ' ')
-                    Console.Write(' ');
-                else
-                {
-                    nlcount++;
-                    Console.SetCursorPosition(Position.x, Position.y+nlcount);
-                }
+                Console.Write(new string(' ', previousStringW));
+                nlcount++;
+                Console.SetCursorPosition(Position.x, Position.y+nlcount);
             }
-            previousString = "";
         }
 
         public void ReRender()

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace Renderer
@@ -50,7 +51,19 @@ namespace Renderer
 
         public void Render()
         {
-            if(Selected) Console.BackgroundColor = Window.SelectedColor;
+            if(Selected)
+            { 
+                Console.BackgroundColor = Window.SelectedColor;
+
+                for(int i = 0; i < Options.Count; i++)
+                {
+                    for(int j = 0; j < Options.OrderBy(x=>x.Length).First().Length; j++)
+                    {
+                        Console.Write(' ');
+                    }
+                }
+                Console.SetCursorPosition(Position.x, Position.y);
+            }
             for (int i = 0; i < Options.Count; i++)
             {
                 string s = leftSide + (selectedOption == i ? selected : " ") + rightSide + " " + Options[i];

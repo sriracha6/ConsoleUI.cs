@@ -52,8 +52,9 @@ namespace Renderer
         int previousStringH;
 
         bool flag = false;
+        bool selectColor;
 
-        public TextArea(string text, int width, int height, int maxTextLength, HorizontalScrollBar hscroller, VerticalScrollBar vscroller)
+        public TextArea(string text, int width, int height, int maxTextLength, bool selectColor, HorizontalScrollBar hscroller, VerticalScrollBar vscroller)
         {
             lines = text.Split('\n').ToList();
             this.Width = width;
@@ -61,16 +62,34 @@ namespace Renderer
             this.maxTextLength = maxTextLength;
             this.hscroll = hscroller;
             this.vscroll = vscroller;
+            this.selectColor = selectColor;
         }
 
         public void Render()
         {
-            if(Selected) Console.BackgroundColor = Window.SelectedColor;
+            if(Selected && selectColor)
+            { 
+                Console.BackgroundColor = Window.SelectedColor;
+
+                for(int i = 0; i < Height + 1; i++)
+                {
+                    Console.Write(new string(' ', Width + 1));
+                    Console.SetCursorPosition(Position.x, Position.y + i);
+                }
+                Console.SetCursorPosition(Position.x, Position.y);
+            }
             vscroll.Position = new Vector2(Position.x+Width, Position.y);
             hscroll.Position = new Vector2(Position.x, Position.y+Height);
             
+            vscroll.Selected = false;
+            hscroll.Selected = false;
+            
+            Console.BackgroundColor = ConsoleColor.Black;
+
             hscroll.ReRender();
             vscroll.ReRender();
+
+            if(Selected && selectColor) Console.BackgroundColor = Window.SelectedColor;
 
             Console.CursorVisible = true;
 
@@ -86,17 +105,20 @@ namespace Renderer
 
                 string tt = lines[i].Substring(scrollLeft, amount);
                 Console.Write(tt);
+                //if(i == lines.Count - 2)
+                //    Console.Write(new string(' ', Width - tt.Length));
             }
             Console.SetCursorPosition(Position.x+(cursorPos.x-scrollLeft), Position.y+(cursorPos.y-scrollTop)+1);
 
             previousStringW = Width;
             previousStringH = Height;
-            if(Selected) Console.BackgroundColor = ConsoleColor.Black;
+            //if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
 
         public void DeRender()
         {
             Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            Console.ResetColor();
             for(int i = 0; i < previousStringH; i++)
             {
                 Console.Write(new string(' ', previousStringW));
@@ -122,10 +144,8 @@ namespace Renderer
         public void OnClick() 
         {
             cursorPos.y++;
-            // check if we need to scroll
-            if(cursorPos.y > scrollTop+Height-1)
-                scrollTop++;
-            
+            scrollTop++;
+
             lines.Insert(cursorPos.y, lines[cursorPos.y-1].Substring(cursorPos.x, lines[cursorPos.y-1].Length-cursorPos.x));
             lines[cursorPos.y-1] = lines[cursorPos.y-1].Remove(cursorPos.x, lines[cursorPos.y-1].Length-cursorPos.x);
             scrollLeft = 0;
@@ -150,7 +170,7 @@ namespace Renderer
         public void OnDownArrow()
         {
             if(cursorPos.y+1 < lines.Count) cursorPos.y++;
-            if (scrollTop + 1 < lines.Count-Height && cursorPos.y > scrollTop+Height-1)
+            if (scrollTop < lines.Count-Height-1 || cursorPos.y > scrollTop+Height-2)
             {
                 scrollTop++;
                 vscroll.Progress = Height-(int)(1f/(scrollTop + Height/2) * (lines.Count)); 
@@ -169,6 +189,7 @@ namespace Renderer
             {
                 scrollLeft--;
                 hscroll.Progress = Width-(int)(1f/(scrollLeft + Width/2) * (longestLine.Length)); 
+                if(hscroll.Progress == 0) hscroll.Progress = 1;
             }
             flag = false;
             ReRender();
@@ -180,6 +201,7 @@ namespace Renderer
             {
                 scrollLeft++;
                 hscroll.Progress = Width-(int)(1f/(scrollLeft + Width/2) * (longestLine.Length)); 
+                if(hscroll.Progress == 0) hscroll.Progress = 1;
             }
             ReRender();
             flag = false;
@@ -191,7 +213,7 @@ namespace Renderer
 
         public void OnTextInput(ConsoleKeyInfo character) 
         {
-            if(character.Key == ConsoleKey.Backspace && lines[cursorPos.y].Length-1 >= 0)
+            if(character.Key == ConsoleKey.Backspace)
             {
                 if(cursorPos.x-1 >= 0 && !flag)
                 cursorPos.x--;
@@ -201,6 +223,7 @@ namespace Renderer
                 {
                     lines.RemoveAt(cursorPos.y);
                     cursorPos.y--;
+                    cursorPos.x = lines[cursorPos.y].Length;
                 }
                 else
                     lines[cursorPos.y] = lines[cursorPos.y].Remove(cursorPos.x, 1);
@@ -213,6 +236,7 @@ namespace Renderer
             }
             else
             {   
+                if(character.Key == ConsoleKey.Tab) return;
                 if(lines.Sum(x=>x.Length)+1 > maxTextLength) return;
                 lines[cursorPos.y] = lines[cursorPos.y].Insert(cursorPos.x, character.KeyChar.ToString());
 

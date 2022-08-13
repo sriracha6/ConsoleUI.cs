@@ -20,6 +20,7 @@ namespace Renderer
                 currentKey = key;
                 if(key.Key == ConsoleKey.Tab && pressShift)
                 {
+                    Console.CursorVisible = false;
                     if(currentItem != null) 
                     { 
                         currentItem.OnHoverLeave();
@@ -39,6 +40,7 @@ namespace Renderer
                 }
                 else if(key.Key == ConsoleKey.Tab && !pressShift && currentItemIndex+1 < Renderer.inputItemsOrdered.Count)
                 {
+                    Console.CursorVisible = false;
                     if(currentItem != null) 
                     { 
                         currentItem.OnHoverLeave();
