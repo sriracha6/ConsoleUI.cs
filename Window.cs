@@ -10,6 +10,8 @@ namespace Renderer
 
         public static ConsoleColor SelectedColor;
 
+        public static int AnimationRateMS;
+
         static void FixWindowSize()
         {
             for(;;)
@@ -22,12 +24,13 @@ namespace Renderer
             }
         }
 
-        public static void Init(int consoleWidth, int consoleHeight, ConsoleColor selectedColor)
+        public static void Init(int consoleWidth, int consoleHeight, ConsoleColor selectedColor, int animationRateMS=750)
         {
             Console.CursorVisible = false;
             width = consoleWidth;
             height = consoleHeight;
             SelectedColor = selectedColor;
+            AnimationRateMS = animationRateMS;
             Console.SetWindowSize(width, height);
             Console.SetBufferSize(width, height);
 
@@ -35,6 +38,19 @@ namespace Renderer
             inputThread.Start();
             Thread windowSizeThread = new Thread(FixWindowSize);
             windowSizeThread.Start();
+            Thread animationThread = new Thread(Animate);
+            animationThread.Start();
+        }
+
+        private static void Animate()
+        {
+            for(;;)
+            {
+                Thread.Sleep(AnimationRateMS);
+                foreach(IAnimatable r in Renderer.animatableItems) 
+                    if(r.Visible)
+                        r.Tick();
+            }
         }
     }
 }

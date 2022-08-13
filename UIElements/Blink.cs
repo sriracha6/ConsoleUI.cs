@@ -2,12 +2,15 @@ using System;
 
 namespace Renderer
 {
-    public class Label : IRenderable
+    // TODO: remake this to be a wrapper of a label that is constantly changed visible state
+    public class Blink : IAnimatable
     {
         public Vector2 Position { get; set; }
         private string _text;
         public string text { get {return _text;} set {_text = value; ReRender();}}
         private string previousString;
+
+        int tickCount;
 
                 bool _Visible = true;
         public bool Selected { get; set; }
@@ -24,9 +27,10 @@ namespace Renderer
             } 
         }
 
-        public Label(string text)
+        public Blink(string text)
         {
             this._text = text;
+            Renderer.animatableItems.Add(this);
         }
 
         public void Render()
@@ -67,6 +71,13 @@ namespace Renderer
             DeRender();
             Console.SetCursorPosition(Position.x, Position.y);
             Render();
+        }
+
+        public void Tick()
+        {
+            tickCount++;
+            if(tickCount % 2 == 0) ReRender();
+            else DeRender();
         }
     }
 }

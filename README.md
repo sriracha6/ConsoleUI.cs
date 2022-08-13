@@ -3,6 +3,8 @@ A simple, extensible Console UI library in C-Sharp.
 
 ![Screenshot](screenshot.png)
 
+Controllable using tab, shift+tab, arrow keys, and enter.
+
 ## Example
 ```csharp
  using Renderer;
@@ -31,7 +33,7 @@ Elements
     [X] SelectListView
     [ ] TreeView
     [ ] Marquee
-    [ ] Blink
+    [X] Blink
     [X] Horizontal Rule
     [X] Slider
     [ ] Table
@@ -43,7 +45,7 @@ Functionality
     [X] ReRender
     [ ] Color
     [X] Derive from UIElement
-    [ ] Animations
+    [X] Animations
     [X] OnHovers (bold, not bgcolor)
     [X] Placeholders in text boxes
     [ ] StyleInfo (new Button(text, styleInfo))

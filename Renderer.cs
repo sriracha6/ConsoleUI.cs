@@ -3,10 +3,12 @@ using System.Collections.Generic;
 
 namespace Renderer
 {
+    // this class is bad
     public static class Renderer
     {
         public static List<IRenderable> itemsOrdered = new List<IRenderable>();
         public static List<IInteractive> inputItemsOrdered = new List<IInteractive>();
+        public static List<IAnimatable> animatableItems = new List<IAnimatable>();
         public static List<Vector2> inputItemsPositions = new List<Vector2>();
 
         public static void Render(IInteractive item, Vector2 position)

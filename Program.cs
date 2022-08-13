@@ -33,6 +33,8 @@ namespace Renderer
             TextArea ta = new TextArea("This. is a textarea. \nIt probably took a while for me to make. \nThis particular one has a text length limit of 1000\nHave fun typing away.\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest", 10,10, 1000, true, new HorizontalScrollBar(0, 10), new VerticalScrollBar(0,10));
             TreeView tv = new TreeView("Test Treeview", new List<TreeView>() { new TreeView("Lol!")});
 
+            Blink blink = new Blink("Blink!");
+
             Renderer.Render(gBox, new Vector2(0,0));
             Renderer.Render(s, new Vector2(21, 0));
             //Renderer.Render(tv, new Vector2(60, 0));
@@ -47,6 +49,7 @@ namespace Renderer
             Renderer.Render(listView, new Vector2(30,6));
             Renderer.Render(sView, new Vector2(30,13));
             Renderer.Render(ta, new Vector2(50, 5));
+            Renderer.Render(blink, new Vector2(20, 0));
         }
     }
 }

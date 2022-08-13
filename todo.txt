@@ -18,7 +18,7 @@ Elements
     [X] SelectListView
     [ ] TreeView
     [ ] Marquee
-    [ ] Blink
+    [X] Blink
     [X] Horizontal Rule
     [X] Slider
     [ ] Table
@@ -30,12 +30,13 @@ Functionality
     [X] ReRender
     [ ] Color
     [X] Derive from UIElement
-    [ ] Animations
+    [X] Animations
     [X] OnHovers (bold, not bgcolor)
     [X] Placeholders in text boxes
     [ ] StyleInfo (new Button(text, styleInfo))
     [ ] TextArea selection (shift+arrows to select, copy/cut/paste)
     [X] TextBox/IntTextBox cursor
+    [ ] TabIndex
 
 [ ] Make every property public, rerender on change
 [X] Ansi string class. IE new AnsiString("Hello") + " World!".Color(ConsoleColor.Green) + " Bold".Bold();
