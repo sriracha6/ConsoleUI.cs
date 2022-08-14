@@ -34,6 +34,8 @@ namespace Renderer
             Console.SetWindowSize(width, height);
             Console.SetBufferSize(width, height);
 
+            Console.CursorVisible = false;
+
             Thread inputThread = new Thread(Input.GetInput);
             inputThread.Start();
             Thread windowSizeThread = new Thread(FixWindowSize);
@@ -49,7 +51,10 @@ namespace Renderer
                 Thread.Sleep(AnimationRateMS);
                 foreach(IAnimatable r in Renderer.animatableItems) 
                     if(r.Visible)
+                    {
+                        Console.ResetColor();
                         r.Tick();
+                    }
             }
         }
     }

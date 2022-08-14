@@ -4,8 +4,9 @@ namespace Renderer
 {
     public class ProgressBar : IRenderable
     {
-        public Vector2 Position { get; set; }
-        private int _progress;
+        Vector2 _Position;
+        public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
+        int _progress;
         public int Progress {
             get { return _progress; }
             set { _progress = value; ReRender(); }

@@ -4,7 +4,8 @@ namespace Renderer
 {
     public class CheckBox : IInteractive
     {
-        public Vector2 Position { get; set; }
+        Vector2 _Position;
+        public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
         private bool _isChecked;
         public bool IsChecked {get {return _isChecked;} set{_isChecked = value; ReRender();}}
         private string _Text;

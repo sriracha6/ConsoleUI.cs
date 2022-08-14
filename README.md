@@ -32,7 +32,7 @@ Elements
     [X] BigTextBox
     [X] SelectListView
     [ ] TreeView
-    [ ] Marquee
+    [X] Marquee
     [X] Blink
     [X] Horizontal Rule
     [X] Slider

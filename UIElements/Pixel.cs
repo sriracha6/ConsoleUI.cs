@@ -4,8 +4,8 @@ namespace Renderer
 {
     public class Pixel : IRenderable
     {
-        public Vector2 Position { get; set; }
-
+        Vector2 _Position;
+        public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
         public char? Char;
         public ConsoleColor Color;
 

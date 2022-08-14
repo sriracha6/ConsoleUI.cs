@@ -6,7 +6,8 @@ namespace Renderer
     // TODO: word wrap
     public class BigTextBox : IInteractive
     {
-        public Vector2 Position { get; set; }
+        Vector2 _Position;
+        public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
         private string _text;
         public string text { get {return _text;} set {_text = value; SetOptions(); ReRender();}}
 

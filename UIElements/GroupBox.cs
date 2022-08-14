@@ -6,8 +6,8 @@ namespace Renderer
     {
         public string Text;
         public Panel Panel;
-        public Vector2 Position { get; set; }
-
+        Vector2 _Position;
+        public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
                 bool _Visible = true;
         public bool Selected { get; set; }
         public bool Visible 

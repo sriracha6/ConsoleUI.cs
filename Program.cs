@@ -34,6 +34,7 @@ namespace Renderer
             TreeView tv = new TreeView("Test Treeview", new List<TreeView>() { new TreeView("Lol!")});
 
             Blink blink = new Blink("Blink!");
+            Marquee marquee = new Marquee("Marquee!!!!", 7);
 
             Renderer.Render(gBox, new Vector2(0,0));
             Renderer.Render(s, new Vector2(21, 0));
@@ -50,6 +51,7 @@ namespace Renderer
             Renderer.Render(sView, new Vector2(30,13));
             Renderer.Render(ta, new Vector2(50, 5));
             Renderer.Render(blink, new Vector2(20, 0));
+            Renderer.Render(marquee, new Vector2(1, 17));
         }
     }
 }

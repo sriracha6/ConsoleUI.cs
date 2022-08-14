@@ -5,9 +5,10 @@ namespace Renderer
 {
     public class ListView : IInteractive
     {
-        public Vector2 Position { get; set; }
-        public int Width { get; set; }
+        Vector2 _Position;
+        public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
         int _Height;
+        public int Width {get; set;}
         public int Height 
         {
             get { return _Height; }

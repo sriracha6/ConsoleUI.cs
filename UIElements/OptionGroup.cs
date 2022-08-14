@@ -6,7 +6,8 @@ namespace Renderer
 {
     public class OptionGroup : IInteractive
     {
-        public Vector2 Position {get; set;}
+        Vector2 _Position;
+        public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
         public List<string> Options = new List<string>();
         public int selectedOption;
         

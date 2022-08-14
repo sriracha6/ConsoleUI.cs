@@ -31,6 +31,7 @@ namespace Renderer
                         currentItemIndex--;
                     else
                         currentItemIndex = Renderer.inputItemsOrdered.Count - 1;
+                    Console.ResetColor();
                     var pos = Renderer.inputItemsPositions[currentItemIndex];
                     Console.SetCursorPosition(pos.x, pos.y);
                     currentItem = Renderer.inputItemsOrdered[currentItemIndex];
@@ -47,7 +48,7 @@ namespace Renderer
                         currentItem.Selected = false;
                         currentItem.ReRender(); 
                     } 
-
+                    Console.ResetColor();
                     currentItemIndex++;
                     currentItem = Renderer.inputItemsOrdered[currentItemIndex];
                     currentItem.Selected = true;

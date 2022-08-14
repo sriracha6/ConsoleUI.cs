@@ -6,7 +6,8 @@ namespace Renderer
 {
     public class TextArea : IInteractive
     {
-        public Vector2 Position {get; set;}
+        Vector2 _Position;
+        public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
         public string text {
             get { 
                 string _text = "";

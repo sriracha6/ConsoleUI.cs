@@ -4,8 +4,9 @@ namespace Renderer
 {
     public class Label : IRenderable
     {
-        public Vector2 Position { get; set; }
-        private string _text;
+        Vector2 _Position;
+        public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
+        string _text;
         public string text { get {return _text;} set {_text = value; ReRender();}}
         private string previousString;
 

@@ -20,9 +20,10 @@ namespace Renderer
     }
     public class TreeView : IInteractive
     {
-        public Vector2 Position { get; set; }
-                bool _Visible = true;
+        Vector2 _Position;
+        public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
         public bool Selected { get; set; }
+        bool _Visible;
         public bool Visible 
         { 
             get { return _Visible; } 

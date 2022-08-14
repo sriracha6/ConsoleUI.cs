@@ -7,10 +7,10 @@ namespace Renderer
     // TODO: any changes to listview must be made to this. im gonna forget to do it and then have to rewrite this
     public class SelectListView : IInteractive
     {
-        public Vector2 Position { get; set; }
-        public int Width { get; set; }
+        Vector2 _Position;
+        public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
         int _Height;
-
+        public int Width { get; set; }
         public int SelectedItemIndex;
         public string SelectedItem { get { return options[SelectedItemIndex]; } }
 

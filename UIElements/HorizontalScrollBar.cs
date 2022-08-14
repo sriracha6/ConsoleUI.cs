@@ -4,7 +4,8 @@ namespace Renderer
 {
     public class HorizontalScrollBar : IInteractive
     {
-        public Vector2 Position { get; set; }
+        Vector2 _Position;
+        public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
         int _Progress;
         public int Progress { get { return _Progress; } set { _Progress = value; ReRender(); } }
         public int Width;

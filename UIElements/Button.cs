@@ -4,8 +4,9 @@ namespace Renderer
 {
     public class Button : IInteractive
     {
-        public Vector2 Position { get; set; }
-                bool _Visible = true;
+        Vector2 _Position;
+        public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
+           bool _Visible = true;
         public bool Selected { get; set; }
         public bool Visible 
         { 
