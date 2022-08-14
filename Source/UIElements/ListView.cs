@@ -8,17 +8,18 @@ namespace Renderer
         Vector2 _Position;
         public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
         int _Height;
-        public int Width {get; set;}
+        int _Width;
+        public int Width { get { return _Width; } set { _Width = value; if(_Position != null) ReRender(); } }
         public int Height 
         {
             get { return _Height; }
             set { _Height = value; 
-            DeRender();
+            if(_Position != null) DeRender();
             scrollBar = new VerticalScrollBar(0, _Height);
             scrollBar.Position = new Vector2(Position.x + Width - 1, Position.y);
             scrollBar.Render();
 
-            ReRender();
+            if(_Position != null) ReRender();
             
             }
         }
@@ -38,7 +39,8 @@ namespace Renderer
             } 
         }
 
-        public bool outieScrollbars = false;
+        bool _outieScrollbars;
+        public bool outieScrollbars { get { return _outieScrollbars; } set { _outieScrollbars = value; ReRender(); } }
         List<string> options = new List<string>();
 
         int progress;
@@ -121,6 +123,7 @@ namespace Renderer
 
         public void ReRender()
         {
+            if(Position == null) return;
             DeRender();
             Console.SetCursorPosition(Position.x, Position.y);
             Render();

@@ -26,8 +26,9 @@ namespace Renderer
             } 
         }
 
-        public int Width;
-        public int Height;
+        int _width; int _height;
+        public int Width { get { return _width; } set { _width = value; if(_Position!=null) { SetOptions(); ReRender(); } } }
+        public int Height { get{ return _height; } set{ _height = value; if(_Position!=null) { SetOptions(); ReRender(); } } }
 
         ListView listBox;
 
@@ -60,7 +61,7 @@ namespace Renderer
 
         void SetOptions()
         {
-            listBox.ClearItems();
+            listBox.ClearItems(false);
             foreach(string s in GetOptions())
                 listBox.AddItem(s, false);
         }

@@ -30,18 +30,18 @@ namespace Renderer
                     if(currentItemIndex > 0)
                         currentItemIndex--;
                     else
-                        currentItemIndex = Renderer.inputItemsOrdered.Count - 1;
+                        currentItemIndex = URenderer.inputItemsOrdered.Count - 1;
                     Console.ResetColor();
-                    var pos = Renderer.inputItemsPositions[currentItemIndex];
+                    var pos = URenderer.inputItemsPositions[currentItemIndex];
                     Console.SetCursorPosition(pos.x, pos.y);
-                    currentItem = Renderer.inputItemsOrdered[currentItemIndex];
+                    currentItem = URenderer.inputItemsOrdered[currentItemIndex];
                     currentItem.Selected = true;
                     currentItem.OnHover();
                     currentItem.ReRender();
                 }
-                else if(key.Key == ConsoleKey.Tab && !pressShift && currentItemIndex+1 < Renderer.inputItemsOrdered.Count)
+                else if(key.Key == ConsoleKey.Tab && !pressShift && currentItemIndex+1 < URenderer.inputItemsOrdered.Count)
                 {
-                    Console.CursorVisible = false;
+                    Console.CursorVisible = false; 
                     if(currentItem != null) 
                     { 
                         currentItem.OnHoverLeave();
@@ -50,7 +50,7 @@ namespace Renderer
                     } 
                     Console.ResetColor();
                     currentItemIndex++;
-                    currentItem = Renderer.inputItemsOrdered[currentItemIndex];
+                    currentItem = URenderer.inputItemsOrdered[currentItemIndex];
                     currentItem.Selected = true;
                     currentItem.OnHover();
                     currentItem.ReRender();

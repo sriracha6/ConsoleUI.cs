@@ -8,6 +8,6 @@ class Example1
         Console.Clear();
         Window.Init(120,30, ConsoleColor.DarkBlue);
         Label s = new Label("Hello, World!");
-        Renderer.Render(s, new Vector2(0,0));
+        URenderer.Render(s, new Vector2(0,0));
     }
 }

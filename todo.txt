@@ -28,7 +28,8 @@ Functionality
     [x] Renderer/IRenderable
     [X] Input (tab navigate) IInputable
     [X] ReRender
-    [ ] Color
+    [X] Color (use AnsiString instaed of complicating things)
+    [ ] ConsoleColor -> System.Drawing.Color
     [X] Derive from UIElement
     [X] Animations
     [X] OnHovers (bold, not bgcolor)

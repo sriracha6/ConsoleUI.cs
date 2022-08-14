@@ -6,18 +6,23 @@ namespace Renderer
     {
         Vector2 _Position;
         public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
-        public int text;
-        public int width;
-        public int maxValue;
-        public int minValue;
+        int _text;
+        public int text { get { return _text; } set { _text = value; if(_Position != null) ReRender(); } }
+        int _width;
+        public int width { get { return _width; } set { _width = value; if(_Position != null) ReRender(); } }
+        int _maxtext;
+        public int maxValue { get { return _maxtext; } set { _maxtext = value; if(_maxtext > text) text = _maxtext; if(_Position != null) ReRender(); } }
+        int _mintext;
+        public int minValue { get { return _mintext; } set { _mintext = value; if(_mintext < text) text = _mintext; if(_Position != null) ReRender(); } }
 
         int scrollLeft;
 
-        public string PlaceHolder;
+        string _PlaceHolder;
+        public string PlaceHolder { get { return _PlaceHolder; } set { _PlaceHolder = value; if(_Position != null) ReRender(); } }
 
-        public string leftSide = "[";
-        public string rightSide = "]";
-        public string upDown = "^v";
+        string leftSide = "[";
+        string rightSide = "]";
+        string upDown = "^v";
 
                 bool _Visible = true;
         public bool Selected { get; set; }

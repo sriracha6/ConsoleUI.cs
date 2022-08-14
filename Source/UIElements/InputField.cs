@@ -7,16 +7,20 @@ namespace Renderer
         Vector2 _Position;
         public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
         
-        public string text;
-        public int width;
-        public int maxTextLength;
+        string _text;
+        public string text { get { return _text; } set { _text = value; if(_Position != null) ReRender(); } }
+        int _width;
+        public int width { get { return _width; } set { _width = value; if(_Position != null) ReRender(); } } 
+        int _maxtext;
+        public int maxTextLength { get { return _maxtext; } set { _maxtext = value; if(_maxtext > text.Length) text = text.Substring(0,_maxtext); } }
 
         int scrollLeft;
 
         public string leftSide = "[";
         public string rightSide = "]";
 
-        public string PlaceHolder;
+        string _PlaceHolder;
+        public string PlaceHolder { get { return _PlaceHolder; } set { _PlaceHolder = value; if(_Position != null) ReRender(); } }
 
                 bool _Visible = true;
         public bool Selected { get; set; }
@@ -42,7 +46,7 @@ namespace Renderer
         {
             this.text = text;
             this.width = width;
-            this.maxTextLength = maxTextLength;
+            this._maxtext = maxTextLength;
             this.PlaceHolder = placeholder;
         }
 

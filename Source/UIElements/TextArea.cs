@@ -15,10 +15,18 @@ namespace Renderer
                     _text += s + "\n";
                 return _text;
             }
+            set
+            {
+                lines = value.Split('\n').ToList();
+                ReRender();
+            }
         }
-        public int Width;
-        public int Height;
-        public int maxTextLength;
+        int _width;
+        public int Width { get { return _width; } set { _width = value; if(_Position!=null) ReRender(); } }
+        int _height;
+        public int Height { get { return _height; } set { _height = value; if(_Position!=null) ReRender(); } }
+        int _maxtextlength;
+        public int maxTextLength { get { return _maxtextlength; } set { _maxtextlength = value; if(_Position!=null) ReRender(); } }
 
         List<string> lines = new List<string>();
         string longestLine { get { return lines.Aggregate("", (max, cur) => max.Length > cur.Length ? max : cur);}}

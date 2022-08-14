@@ -6,10 +6,14 @@ namespace Renderer
     {
         Vector2 _Position;
         public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
-        public int value;
-        public int maxValue;
-        public int minValue;
-        public int width;
+        int _value;
+        public int value { get { return _value; } set { _value = value; if(_Position != null) ReRender(); } }
+        int _maxValue;
+        public int maxValue { get { return _maxValue; } set { _maxValue = value; if(_maxValue > value) value = _maxValue; if(_Position != null) ReRender(); } }  
+        int _minValue;
+        public int minValue { get { return _minValue; } set { _minValue = value; if(_minValue < value) value = _minValue; if(_Position != null) ReRender(); } }
+        int _width;
+        public int width { get { return _width; } set { _width = value; if(_Position != null) ReRender(); } }
         public int step;
 
                 bool _Visible = true;
@@ -27,9 +31,9 @@ namespace Renderer
             } 
         }
 
-        public string leftSide = "[";
-        public string slider = "|";
-        public string rightSide = "]";
+        string leftSide = "[";
+        string slider = "|";
+        string rightSide = "]";
 
         int previousString = 0;
 

@@ -10,8 +10,10 @@ namespace Renderer
         Vector2 _Position;
         public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
         int _Height;
-        public int Width { get; set; }
-        public int SelectedItemIndex;
+        int _Width;
+        public int Width { get { return _Width; } set { _Width = value; if(_Position != null) ReRender(); } }
+        int _selecteditemindex;
+        public int SelectedItemIndex { get { return _selecteditemindex; } set { _selecteditemindex = value; if(_Position != null) ReRender(); } }
         public string SelectedItem { get { return options[SelectedItemIndex]; } }
 
         int hoveredItem;
@@ -45,9 +47,11 @@ namespace Renderer
             } 
         }
 
-        public ConsoleColor selectedColor;
+        ConsoleColor _slc;
+        public ConsoleColor selectedColor { get { return _slc; } set { _slc = value; if(_Position != null) ReRender(); } }
 
-        public bool outieScrollbars = false;
+        bool _outieScrollbars;
+        public bool outieScrollbars { get { return _outieScrollbars; } set { _outieScrollbars = value; ReRender(); } }
         List<string> options = new List<string>();
 
         int progress;
@@ -142,6 +146,7 @@ namespace Renderer
 
         public void ReRender()
         {
+            if(Position == null) return;
             DeRender();
             Console.SetCursorPosition(Position.x, Position.y);
             Render();

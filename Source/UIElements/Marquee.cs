@@ -35,7 +35,7 @@ namespace Renderer
             this._text = text + new string(' ', width);
             this.Width = width;
             label = new Label(text.Substring(0, width));
-            Renderer.animatableItems.Add(this);
+            URenderer.animatableItems.Add(this);
         }
 
         public void Render()
@@ -52,12 +52,22 @@ namespace Renderer
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition(Position.x, Position.y);
+            lock(new object())
+            {
+                Console.SetCursorPosition(Position.x, Position.y);
+            }
             Render();
         }
 
         public void Tick()
         {
+            /*
+            Hold on, can't we just do: 
+			message = message.substr(1) + message.substr(0,1);
+			message.substr(0,width);
+
+            todo..
+            */
             if(tickCount + Width >= text.Length || tickCount < 0)
             {
                 revolutions++;

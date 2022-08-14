@@ -9,7 +9,8 @@ namespace Renderer
         Vector2 _Position;
         public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
         public List<string> Options = new List<string>();
-        public int selectedOption;
+        int _selectedOption = -1;
+        public int selectedOption { get { return _selectedOption; } set { _selectedOption = value; if(_Position != null) ReRender(); } }
         
         int hoveredOption = -1;
 
@@ -111,7 +112,7 @@ namespace Renderer
             if(hoveredOption-1 >= 0)
             {
                 hoveredOption--;
-                selectedOption--;
+                //selectedOption--;
             }
         }
         public void OnDownArrow() 
@@ -119,7 +120,7 @@ namespace Renderer
             if (hoveredOption+1 < Options.Count)
             {
                 hoveredOption++;
-                selectedOption++;
+                //selectedOption++;
             }
         }
         public void OnLeftArrow() { }

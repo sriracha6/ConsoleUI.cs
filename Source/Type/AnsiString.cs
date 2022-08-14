@@ -58,5 +58,15 @@ namespace Renderer
         {
             return new AnsiString("\x1b[48;2;" + color.R + ";" + color.G + ";" + color.B + "m" + text + "\x1b[0m");
         }
+
+        public static AnsiString Underline(this string text)
+        {
+            return new AnsiString("\x1b[4m" + text + "\x1b[0m");
+        }
+
+        public static AnsiString Reverse(this string text)
+        {
+            return new AnsiString("\x1b[7m" + text + "\x1b[0m");
+        }
    }
 }

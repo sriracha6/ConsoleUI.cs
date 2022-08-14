@@ -32,6 +32,7 @@ namespace Renderer
 
         public void Render()
         {
+            Console.SetCursorPosition(Position.x, Position.y);
             previousString = UIElement.ParsePreviousString(text);
             int nlcount = 0;
             for(int i = 0; i < text.Length; i++)
@@ -48,7 +49,10 @@ namespace Renderer
 
         public void DeRender()
         {
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            lock(new object())
+            {
+                Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            }
             Console.ResetColor();
             int nlcount = 0;
             for(int i = 0; i < previousString.Length; i++)
@@ -66,7 +70,10 @@ namespace Renderer
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition(Position.x, Position.y);
+            lock(new object())
+            {
+                Console.SetCursorPosition(Position.x, Position.y);
+            }
             Render();
         }
     }

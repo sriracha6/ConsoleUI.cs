@@ -6,8 +6,10 @@ namespace Renderer
     {
         Vector2 _Position;
         public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
-        public int width;
-        public BorderType borderStyle;
+        int _width;
+        public int width { get { return _width; } set { _width = value; if(_Position != null) ReRender(); } }
+        BorderType _borderStyle;
+        public BorderType borderStyle { get { return _borderStyle; } set { _borderStyle = value; if(_Position != null) ReRender(); } }
 
         string previousString;
         

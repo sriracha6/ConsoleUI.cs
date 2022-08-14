@@ -7,7 +7,7 @@ namespace Renderer
         Vector2 _Position;
         public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
         int _Progress;
-        public int Progress { get { return _Progress; } set { _Progress = value; ReRender(); } }
+        public int Progress { get { return _Progress; } set { _Progress = value; if (_Position != null) ReRender(); } }
         public int Height;
 
                 bool _Visible = true;

@@ -4,8 +4,11 @@ namespace Renderer
 {
     public class GroupBox : IRenderable
     {
-        public string Text;
-        public Panel Panel;
+        string _Text; 
+        Panel _Panel;
+
+        public string Text { get{return _Text;} set {_Text = value; if(_Position!=null) ReRender(); } }
+        public Panel Panel{ get{return _Panel;} set {_Panel = value; if(_Position!=null) ReRender(); } }
         Vector2 _Position;
         public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
                 bool _Visible = true;

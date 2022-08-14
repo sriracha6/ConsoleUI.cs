@@ -28,6 +28,10 @@ namespace Renderer
         string leftSide = "[";
         string rightSide = "]";
 
+        public Button(string text)
+        {
+            this._Text = text;
+        }
         public Button(string text, Action OnClick)
         {
             this._Text = text;
@@ -37,6 +41,12 @@ namespace Renderer
         {
             this._Text = text;
             this.onClick = OnClick;
+            this.leftSide = leftSide;
+            this.rightSide = rightSide;
+        }
+        public Button(string text, string leftSide, string rightSide)
+        {
+            this._Text = text;
             this.leftSide = leftSide;
             this.rightSide = rightSide;
         }
@@ -64,7 +74,7 @@ namespace Renderer
         }
 
         public void OnHover() { }
-        public void OnClick() { this.onClick(); }
+        public void OnClick() { if(onClick!=null) this.onClick(); }
         public void OnUpArrow() { }
         public void OnDownArrow() { }
         public void OnLeftArrow() { }

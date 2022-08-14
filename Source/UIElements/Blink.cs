@@ -31,7 +31,7 @@ namespace Renderer
         public Blink(string text)
         {
             this._text = text;
-            Renderer.animatableItems.Add(this);
+            URenderer.animatableItems.Add(this);
         }
 
         public void Render()
@@ -52,7 +52,10 @@ namespace Renderer
 
         public void DeRender()
         {
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            lock(new object())
+            {
+                Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            }
             Console.ResetColor();
             int nlcount = 0;
             for(int i = 0; i < previousString.Length; i++)
@@ -70,7 +73,10 @@ namespace Renderer
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition(Position.x, Position.y);
+            lock(new object())
+            {
+                Console.SetCursorPosition(Position.x, Position.y);
+            }
             Render();
         }
 

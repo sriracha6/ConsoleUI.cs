@@ -8,7 +8,8 @@ namespace Renderer
         public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
         int _Progress;
         public int Progress { get { return _Progress; } set { _Progress = value; ReRender(); } }
-        public int Width;
+        int _width;
+        public int Width { get { return _width; } set { _width = value; if(_Position != null) ReRender(); } }
 
                 bool _Visible = true;
         public bool Selected { get; set; }

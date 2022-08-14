@@ -49,10 +49,11 @@ namespace Renderer
             for(;;)
             {
                 Thread.Sleep(AnimationRateMS);
-                foreach(IAnimatable r in Renderer.animatableItems) 
+                foreach(IAnimatable r in URenderer.animatableItems) 
                     if(r.Visible)
                     {
                         Console.ResetColor();
+                        Console.SetCursorPosition(r.Position.x, r.Position.y);
                         r.Tick();
                     }
             }

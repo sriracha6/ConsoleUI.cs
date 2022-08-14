@@ -6,8 +6,11 @@ namespace Renderer
     {
         Vector2 _Position;
         public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
-        int width;
-        int height;
+        int _width;
+        int _height;
+
+        public int width { get { return _width; } set { _width = value; if(_Position != null) ReRender(); } }
+        public int height { get { return _height; } set { _height = value; if(_Position != null) ReRender(); } }
 
                 bool _Visible = true;
         public bool Selected { get; set; }
@@ -25,8 +28,9 @@ namespace Renderer
         }
 
         Border border;
-        BorderType borderType;
-        char fillChar;
+        public BorderType borderType { get { return border.borderType; } set { border = new Border(value); if(_Position != null) ReRender(); } }
+        char _fillChar;
+        public char fillChar { get { return _fillChar; } set { _fillChar = value; if(_Position != null) ReRender(); } }
         string previousString;
 
         public Panel(int width, int height, BorderType borderType, char fillChar)

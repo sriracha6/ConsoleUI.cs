@@ -8,7 +8,7 @@ namespace Renderer
     {
         Vector2 _Position;
         public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
-        public List<string> Options = new List<string>();
+        List<string> Options = new List<string>();
         public int selectedOption;
         
         int hoveredOption = -1;
@@ -16,7 +16,8 @@ namespace Renderer
         int previousStringH;
         int previousStringW;
 
-        ConsoleColor selectedColor = ConsoleColor.DarkGray;
+        ConsoleColor _selectedColor = ConsoleColor.DarkGray;
+        ConsoleColor selectedColor { get { return _selectedColor; } set {_selectedColor = value; if(_Position != null) ReRender(); } }
 
         public delegate void OnValueChange();
         public event OnValueChange OnValueChangeEvent;
@@ -45,6 +46,21 @@ namespace Renderer
         {
             Options = options;
             this.selectedColor = selectedColor;
+        }
+
+        public void AddOption(string op)
+        {
+            Options.Add(op);
+        }
+
+        public void RemoveOption(string op)
+        {
+            Options.Remove(op);
+        }
+
+        public void ClearOptions(string op)
+        {
+            Options.Clear();
         }
 
         public void Render()

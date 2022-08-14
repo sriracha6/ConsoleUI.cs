@@ -21,9 +21,11 @@ namespace Renderer
             } 
         }
 
-        public Pixel[,] Pixels;
-        public int Width;
-        public int Height;
+        Pixel[,] _pixels;
+        public Pixel[,] Pixels { get { return _pixels; } set { _pixels = value; if(_Position != null) ReRender(); } }
+
+        public int Width { get { return _pixels.GetLength(0); } } 
+        public int Height { get { return _pixels.GetLength(1); } }
 
         int previousStringX;
         int previousStringY;
@@ -31,14 +33,10 @@ namespace Renderer
         public Image(Pixel[,] pixels, int width, int height)
         {
             this.Pixels = pixels;
-            this.Width = width;
-            this.Height = height;
         }
 
         public Image(string[] lines, ConsoleColor color, int width, int height)
         {
-            this.Width = width;
-            this.Height = height;
             this.Pixels = new Pixel[width, height];
             for(int i = 0; i < width; i++)
             {

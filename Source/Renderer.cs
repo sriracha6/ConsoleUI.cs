@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Renderer
 {
     // this class is bad
-    public static class Renderer
+    public static class URenderer
     {
         public static List<IRenderable> itemsOrdered = new List<IRenderable>();
         public static List<IInteractive> inputItemsOrdered = new List<IInteractive>();

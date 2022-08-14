@@ -11,8 +11,11 @@ namespace Renderer
         public char horizontalChar { get; private set; }
         public char verticalChar { get; private set; }
 
+        public BorderType borderType { get; private set; }
+
         public Border(BorderType bt)
         {
+            borderType = bt;
             switch(bt)
             {
                 case BorderType.PlusAndLines:

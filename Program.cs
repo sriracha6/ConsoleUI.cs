@@ -13,7 +13,7 @@ namespace Renderer
 
             Window.Init(120,30, ConsoleColor.DarkBlue);
 
-            Label s = new Label("Hello, World! " + "AnsiString ".Bold() + "Test!".Color(System.Drawing.Color.CornflowerBlue));
+            Label s = new Label("Hello, World! " + "AnsiString ".Bold() + "Test! ".Color(System.Drawing.Color.CornflowerBlue) + "Yeah!".Underline() + "COol".Reverse());
             ProgressBar p = new ProgressBar(3, 7);
             CheckBox cb = new CheckBox("Check me!", false);
             Button button = new Button("Click me!", delegate {clicks++;s.text = "You clicked the button "+clicks+" times!";});
@@ -36,22 +36,24 @@ namespace Renderer
             Blink blink = new Blink("Blink!");
             Marquee marquee = new Marquee("Marquee!!!!", 7);
 
-            Renderer.Render(gBox, new Vector2(0,0));
-            Renderer.Render(s, new Vector2(21, 0));
+            // order of URenderer.Render is the zLevel stuff. Panels are almost always first. 
+            //   it is also used for TabIndex
+            URenderer.Render(gBox, new Vector2(0,0));
+            URenderer.Render(s, new Vector2(21, 0));
             //Renderer.Render(tv, new Vector2(60, 0));
-            Renderer.Render(p, new Vector2(2, 1));
-            Renderer.Render(cb, new Vector2(4, 2));
-            Renderer.Render(button, new Vector2(6, 3));
-            Renderer.Render(radioGroup, new Vector2(21, 4));
-            Renderer.Render(optionGroup, new Vector2(21, 9));
-            Renderer.Render(slider, new Vector2(1, 6));
-            Renderer.Render(inputfield, new Vector2(15,15));
-            Renderer.Render(intinputfield, new Vector2(15,16));
-            Renderer.Render(listView, new Vector2(30,6));
-            Renderer.Render(sView, new Vector2(30,13));
-            Renderer.Render(ta, new Vector2(50, 5));
-            Renderer.Render(blink, new Vector2(20, 0));
-            Renderer.Render(marquee, new Vector2(1, 17));
+            URenderer.Render(p, new Vector2(2, 1));
+            URenderer.Render(cb, new Vector2(4, 2));
+            URenderer.Render(button, new Vector2(6, 3));
+            URenderer.Render(radioGroup, new Vector2(21, 4));
+            URenderer.Render(optionGroup, new Vector2(21, 9));
+            URenderer.Render(slider, new Vector2(1, 6));
+            URenderer.Render(inputfield, new Vector2(15,15));
+            URenderer.Render(intinputfield, new Vector2(15,16));
+            URenderer.Render(listView, new Vector2(30,6));
+            URenderer.Render(sView, new Vector2(30,13));
+            URenderer.Render(ta, new Vector2(50, 5));
+            URenderer.Render(blink, new Vector2(20, 0));
+            URenderer.Render(marquee, new Vector2(1, 17));
         }
     }
 }
