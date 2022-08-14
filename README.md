@@ -5,6 +5,9 @@ A simple, extensible Console UI library in C-Sharp.
 
 Controllable using tab, shift+tab, arrow keys, and enter.
 
+## How to Use
+You can clone the directory and put the `Source` folder in your project, get it on NuGet or go to releases.
+
 ## Example
 ```csharp
  using Renderer;
