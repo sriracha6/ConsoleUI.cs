@@ -65,21 +65,21 @@ namespace Renderer
         {
             if(Selected) Console.BackgroundColor = Window.SelectedColor;
             string s = leftSide + new string(' ', value/step) + slider + new string(' ',width-value) + rightSide;
-            Console.Write(s);
+            UIElement.Write(s);
             previousString = s.Length;
             if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
 
         public void DeRender()
         {
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
-            Console.Write(new string(' ', previousString));
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
+            UIElement.Write(new string(' ', previousString));
         }
 
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
             Render();
         }
 

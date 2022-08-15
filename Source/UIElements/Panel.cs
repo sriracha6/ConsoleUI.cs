@@ -44,16 +44,16 @@ namespace Renderer
 
         public void DeRender()
         {
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
             int nlcount = 0;
             for(int i = 0; i < previousString.Length; i++)
             {
                 if(previousString[i] == ' ')
-                    Console.Write(' ');
+                    UIElement.Write(' ');
                 else
                 {
                     nlcount++;
-                    Console.SetCursorPosition(Position.x, Position.y+nlcount);
+                    UIElement.CursorPos(Position.x, Position.y+nlcount);
                 }
             }
             previousString = "";
@@ -66,24 +66,24 @@ namespace Renderer
                 for(int j = 0; j < height; j++)
                 {
                     if(i==0 && j==0)
-                        Console.Write(border.topLeftChar);
+                        UIElement.Write(border.topLeftChar);
                     else if(i==width-1 && j==height-1)
-                        Console.Write(border.bottomRightChar);
+                        UIElement.Write(border.bottomRightChar);
                     else if(i==0 && j==height-1)
-                        Console.Write(border.topRightChar);
+                        UIElement.Write(border.topRightChar);
                     else if(i==width-1 && j==0)
-                        Console.Write(border.bottomLeftChar);
+                        UIElement.Write(border.bottomLeftChar);
                     else
                         if(i==0 || i==width-1)
-                            Console.Write(border.horizontalChar);
+                            UIElement.Write(border.horizontalChar);
                         else if(j==0 || j==height-1)
-                            Console.Write(border.verticalChar);
+                            UIElement.Write(border.verticalChar);
                         else
-                            Console.Write(fillChar);
+                            UIElement.Write(fillChar);
                     
                     previousString += " ";
                 }
-                Console.SetCursorPosition(Position.x, Position.y+i+1);
+                UIElement.CursorPos(Position.x, Position.y+i+1);
                 previousString += "\n";
             }
         }
@@ -91,7 +91,7 @@ namespace Renderer
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition(Position.x, Position.y);
+            UIElement.CursorPos(Position.x, Position.y);
             Render();
         }
     }

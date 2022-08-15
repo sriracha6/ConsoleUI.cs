@@ -50,33 +50,33 @@ namespace Renderer
         public void Render()
         {
             //if(Selected) Console.BackgroundColor = Window.SelectedColor;
-            Console.Write(ends);
+            UIElement.Write(ends);
             for(int i = 0; i < Width; i++)
             {
                 if (Progress == 0 && i == 1)
-                    Console.Write(sliderChar);
+                    UIElement.Write(sliderChar);
                 else if (i == Progress && i != 0)
-                    Console.Write(sliderChar);
+                    UIElement.Write(sliderChar);
                 else
-                    Console.Write(noProgress);
-                Console.SetCursorPosition(Position.x+i+1, Position.y);
+                    UIElement.Write(noProgress);
+                UIElement.CursorPos(Position.x+i+1, Position.y);
                 previousString++;
             }
-            Console.Write(ends);
+            UIElement.Write(ends);
             //if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
 
         public void DeRender()
         {
-            Console.SetCursorPosition(Position.x, Position.y);
-            Console.Write(new string(' ', previousString));
+            UIElement.CursorPos(Position.x, Position.y);
+            UIElement.Write(new string(' ', previousString));
             previousString = 0;
         }
 
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition(Position.x, Position.y);
+            UIElement.CursorPos(Position.x, Position.y);
             Render();
         }
 

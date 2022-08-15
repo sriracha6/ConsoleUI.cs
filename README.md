@@ -14,7 +14,7 @@ You can clone the directory and put the `Source` folder in your project, get it 
  Label s = new Label("Hello, World!");
  Renderer.Render(s, new Vector2(5,5));
 ```
-## Types:
+## Features:
 ```
 Elements
     [x] Label
@@ -46,15 +46,17 @@ Functionality
     [x] Renderer/IRenderable
     [X] Input (tab navigate) IInputable
     [X] ReRender
-    [ ] Color
+    [X] Color (use AnsiString instaed of complicating things)
+    [ ] ConsoleColor -> System.Drawing.Color
     [X] Derive from UIElement
     [X] Animations
     [X] OnHovers (bold, not bgcolor)
     [X] Placeholders in text boxes
-    [ ] StyleInfo (new Button(text, styleInfo))
     [ ] TextArea selection (shift+arrows to select, copy/cut/paste)
     [X] TextBox/IntTextBox cursor
+    [ ] TabIndex
+    [ ] HTML like file for layout with names.
 
-[ ] Make every property public, rerender on change
+[X] Make every property public, rerender on change
 [X] Ansi string class. IE new AnsiString("Hello") + " World!".Color(ConsoleColor.Green) + " Bold".Bold();
 ```

@@ -90,11 +90,11 @@ namespace Renderer
             if(Selected)
             {
                 Console.BackgroundColor = Window.SelectedColor;
-                Console.SetCursorPosition(Position.x, Position.y);
+                UIElement.CursorPos(Position.x, Position.y);
                 for(int i = 0; i < Height+1; i++)
                 {
-                    Console.Write(new string(' ', Width));
-                    Console.SetCursorPosition(Position.x, Position.y + i);
+                    UIElement.Write(new string(' ', Width));
+                    UIElement.CursorPos(Position.x, Position.y + i);
                 }
             }
 
@@ -103,8 +103,8 @@ namespace Renderer
             {
                 if(i >= Height+1+progress || i >= options.Count) 
                     break;
-                Console.SetCursorPosition(Position.x, Position.y + y);
-                Console.Write(options[i]);
+                UIElement.CursorPos(Position.x, Position.y + y);
+                UIElement.Write(options[i]);
                 y++;
             }
             if(Selected) Console.BackgroundColor = ConsoleColor.Black;
@@ -112,12 +112,12 @@ namespace Renderer
 
         public void DeRender()
         {
-            Console.SetCursorPosition(Position.x, Position.y);
+            UIElement.CursorPos(Position.x, Position.y);
             Console.ResetColor();
             for(int i = 0; i < Height+1; i++)
             {
-                Console.Write(new string(' ', Width));
-                Console.SetCursorPosition(Position.x, Position.y+i+1);
+                UIElement.Write(new string(' ', Width));
+                UIElement.CursorPos(Position.x, Position.y+i+1);
             }
         }
 
@@ -125,7 +125,7 @@ namespace Renderer
         {
             if(Position == null) return;
             DeRender();
-            Console.SetCursorPosition(Position.x, Position.y);
+            UIElement.CursorPos(Position.x, Position.y);
             Render();
         }
 
@@ -134,7 +134,7 @@ namespace Renderer
         public void OnUpArrow() 
         {
             int scrollerHeight = Height-1;
-            Console.WriteLine(scrollerHeight);
+            UIElement.WriteLine(scrollerHeight);
             if(progress-1 > -1)
             {
                 /*if (progress-1 < Height)

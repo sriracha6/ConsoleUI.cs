@@ -73,24 +73,24 @@ namespace Renderer
                 {
                     for(int j = 0; j < Options.OrderBy(x=>x.Length).First().Length; j++)
                     {
-                        Console.Write(' ');
+                        UIElement.Write(' ');
                     }
                 }
-                Console.SetCursorPosition(Position.x, Position.y);*/
+                UIElement.CursorPos(Position.x, Position.y);*/
             }
             for (int i = 0; i < Options.Count; i++)
             {
                 if(selectedOption == i)
                 {
                     Console.BackgroundColor = selectedColor;
-                    Console.Write(Options[i]+"\n");
+                    UIElement.Write(Options[i]+"\n");
                     if(!Selected) Console.ResetColor();
                     else Console.BackgroundColor = Window.SelectedColor;
                 }
                 else
-                    Console.Write(Options[i]+"\n");
+                    UIElement.Write(Options[i]+"\n");
                 
-                Console.SetCursorPosition(Position.x, Position.y+i+1);
+                UIElement.CursorPos(Position.x, Position.y+i+1);
             }
             previousStringW = Options.OrderBy(x=>x.Length).First().Length;
             previousStringH = Options.Count;
@@ -99,21 +99,21 @@ namespace Renderer
 
         public void DeRender()
         {
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
             Console.ResetColor();
             int nlcount = 0;
             for(int i = 0; i < previousStringH; i++)
             {
-                Console.Write(new string(' ', previousStringW));
+                UIElement.Write(new string(' ', previousStringW));
                 nlcount++;
-                Console.SetCursorPosition(Position.x, Position.y+nlcount);
+                UIElement.CursorPos(Position.x, Position.y+nlcount);
             }
         }
 
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
             Render();
         }
 

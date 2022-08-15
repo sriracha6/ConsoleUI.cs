@@ -56,20 +56,20 @@ namespace Renderer
             if(Selected) Console.BackgroundColor = Window.SelectedColor;
             string s = leftSide + " " + Text + " " + rightSide;
             previousString = UIElement.ParsePreviousString(s);
-            Console.Write(s);
+            UIElement.Write(s);
             if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
         
         public void DeRender()
         {
-            Console.SetCursorPosition(Position.x, Position.y);
-            Console.Write(previousString);
+            UIElement.CursorPos(Position.x, Position.y);
+            UIElement.Write(previousString);
         }
 
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
             Render();
         }
 

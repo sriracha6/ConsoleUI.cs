@@ -82,10 +82,10 @@ namespace Renderer
 
                 for(int i = 0; i < Height + 1; i++)
                 {
-                    Console.Write(new string(' ', Width + 1));
-                    Console.SetCursorPosition(Position.x, Position.y + i);
+                    UIElement.Write(new string(' ', Width + 1));
+                    UIElement.CursorPos(Position.x, Position.y + i);
                 }
-                Console.SetCursorPosition(Position.x, Position.y);
+                UIElement.CursorPos(Position.x, Position.y);
             }
             vscroll.Position = new Vector2(Position.x+Width, Position.y);
             hscroll.Position = new Vector2(Position.x, Position.y+Height);
@@ -106,18 +106,18 @@ namespace Renderer
             {
                 if(i > lines.Count-1)
                     break;
-                Console.SetCursorPosition(Position.x, Position.y+(i-scrollTop)+1);
+                UIElement.CursorPos(Position.x, Position.y+(i-scrollTop)+1);
                 int amount = Width;
                 if(lines[i].Length < scrollLeft + Width)
                     amount = Width - (scrollLeft + Width - lines[i].Length);
                 if(amount <= 0) continue;
 
                 string tt = lines[i].Substring(scrollLeft, amount);
-                Console.Write(tt);
+                UIElement.Write(tt);
                 //if(i == lines.Count - 2)
-                //    Console.Write(new string(' ', Width - tt.Length));
+                //    UIElement.Write(new string(' ', Width - tt.Length));
             }
-            Console.SetCursorPosition(Position.x+(cursorPos.x-scrollLeft), Position.y+(cursorPos.y-scrollTop)+1);
+            UIElement.CursorPos(Position.x+(cursorPos.x-scrollLeft), Position.y+(cursorPos.y-scrollTop)+1);
 
             previousStringW = Width;
             previousStringH = Height;
@@ -126,12 +126,12 @@ namespace Renderer
 
         public void DeRender()
         {
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
             Console.ResetColor();
             for(int i = 0; i < previousStringH; i++)
             {
-                Console.Write(new string(' ', previousStringW));
-                Console.SetCursorPosition(Position.x, Position.y+i+1);
+                UIElement.Write(new string(' ', previousStringW));
+                UIElement.CursorPos(Position.x, Position.y+i+1);
             }
             previousStringW = 0;
             previousStringH = 0;
@@ -142,7 +142,7 @@ namespace Renderer
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
             Render();
         }
 

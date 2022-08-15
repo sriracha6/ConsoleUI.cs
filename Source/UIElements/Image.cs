@@ -53,9 +53,9 @@ namespace Renderer
             {
                 for(int j = 0; j < Height; j++)
                 {
-                    Console.SetCursorPosition((int)Position.x+i, (int)Position.y+j);
+                    UIElement.CursorPos((int)Position.x+i, (int)Position.y+j);
                     Console.ForegroundColor = Pixels[i, j].Color;
-                    Console.Write(Pixels[i, j].Char);
+                    UIElement.Write(Pixels[i, j].Char);
                 }
             }
             previousStringX = Width;//(Width, Height);
@@ -64,13 +64,13 @@ namespace Renderer
 
         public void DeRender()
         {
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
             Console.ResetColor();
             for(int i = 0; i < previousStringX; i++)
             {
                 for(int j = 0; j < previousStringY; j++)
                 {
-                    Console.Write(' ');
+                    UIElement.Write(' ');
                 }
             }
             previousStringX = 0; previousStringY = 0;
@@ -79,7 +79,7 @@ namespace Renderer
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
             Render();
         }
     }

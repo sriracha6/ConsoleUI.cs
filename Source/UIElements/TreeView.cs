@@ -71,7 +71,7 @@ namespace Renderer
         {
             if(Selected) Console.BackgroundColor = Window.SelectedColor;
             string s = (Expanded ? Open : Closed)+ " " + Text;
-            Console.Write(s);
+            UIElement.Write(s);
             previousString = UIElement.ParsePreviousString(s);
             if(!Expanded) return;
             for(int i = 0; i < Children.Count; i++)
@@ -86,16 +86,16 @@ namespace Renderer
 
         public void DeRender()
         {
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
             int nlcount = 1;
             for(int i = 0; i < previousString.Length; i++)
             {
                 if(previousString[i] == ' ')
-                    Console.Write(' ');
+                    UIElement.Write(' ');
                 else
                 {
                     nlcount++;
-                    Console.SetCursorPosition(Position.x, Position.y+nlcount);
+                    UIElement.CursorPos(Position.x, Position.y+nlcount);
                 }
             }
             previousString = "";
@@ -108,7 +108,7 @@ namespace Renderer
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
             Render();
         }
 

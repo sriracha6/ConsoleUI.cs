@@ -61,16 +61,16 @@ namespace Renderer
                 {
                     for(int j = 0; j < Options.OrderBy(x=>x.Length).First().Length; j++)
                     {
-                        Console.Write(' ');
+                        UIElement.Write(' ');
                     }
                 }
-                Console.SetCursorPosition(Position.x, Position.y);
+                UIElement.CursorPos(Position.x, Position.y);
             }
             for (int i = 0; i < Options.Count; i++)
             {
                 string s = leftSide + (selectedOption == i ? selected : " ") + rightSide + " " + Options[i];
-                Console.Write(s+"\n");
-                Console.SetCursorPosition(Position.x, Position.y+i+1);
+                UIElement.Write(s+"\n");
+                UIElement.CursorPos(Position.x, Position.y+i+1);
                 previousString += UIElement.ParsePreviousString(s+"\n");
             }
             if(Selected) Console.BackgroundColor = ConsoleColor.Black;
@@ -78,16 +78,16 @@ namespace Renderer
 
         public void DeRender()
         {
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
             int nlcount = 0;
             for(int i = 0; i < previousString.Length; i++)
             {
                 if(previousString[i] == ' ')
-                    Console.Write(' ');
+                    UIElement.Write(' ');
                 else
                 {
                     nlcount++;
-                    Console.SetCursorPosition(Position.x, Position.y+nlcount);
+                    UIElement.CursorPos(Position.x, Position.y+nlcount);
                 }
             }
             previousString = "";
@@ -96,7 +96,7 @@ namespace Renderer
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
             Render();
         }
 

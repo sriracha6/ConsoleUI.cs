@@ -53,7 +53,7 @@ namespace Renderer
                     if(r.Visible)
                     {
                         Console.ResetColor();
-                        Console.SetCursorPosition(r.Position.x, r.Position.y);
+                        UIElement.CursorPos(r.Position.x, r.Position.y);
                         r.Tick();
                     }
             }

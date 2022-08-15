@@ -24,8 +24,18 @@ namespace Renderer
         {
             return (percent/100) * Console.WindowHeight; 
         }
-
-        public const string START_BOLD = "\x1b[1m";
-        public const string END_BOLD = "\x1b[0m";
+        static object lck = new object();
+        public static void CursorPos(int x, int y)
+        {
+            lock(lck) { Console.SetCursorPosition(x, y); }
+        }
+        public static void Write(object text)
+        {
+            lock(lck) { Console.Write(text.ToString()); }
+        }
+        public static void WriteLine(object text)
+        {
+            lock(lck) { Console.WriteLine(text.ToString()); }
+        }
     }
 }

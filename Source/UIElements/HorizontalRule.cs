@@ -38,19 +38,19 @@ namespace Renderer
         {
             string s = new string(new Border(borderStyle).horizontalChar, width);
             previousString = s;
-            Console.Write(s);
+            UIElement.Write(s);
         }
 
         public void DeRender()
         {
-            Console.SetCursorPosition(Position.x, Position.y);
-            Console.Write(previousString);
+            UIElement.CursorPos(Position.x, Position.y);
+            UIElement.Write(previousString);
         }
 
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition(Position.x, Position.y);
+            UIElement.CursorPos(Position.x, Position.y);
             Render();
         }
     }

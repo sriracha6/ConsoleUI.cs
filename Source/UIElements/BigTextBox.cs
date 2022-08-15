@@ -82,7 +82,7 @@ namespace Renderer
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition(Position.x, Position.y);
+            UIElement.CursorPos(Position.x, Position.y);
             Render();
         }
 

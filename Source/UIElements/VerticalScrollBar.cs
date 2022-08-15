@@ -49,29 +49,29 @@ namespace Renderer
         public void Render()
         {
             //if(Selected) Console.BackgroundColor = Window.SelectedColor;
-            Console.Write(ends);
+            UIElement.Write(ends);
             for(int i = 0; i < Height; i++)
             {
                 if (Progress == 0 && i == 1)
-                    Console.Write(sliderChar);
+                    UIElement.Write(sliderChar);
                 else if (i == Progress && i != 0)
-                    Console.Write(sliderChar);
+                    UIElement.Write(sliderChar);
                 else
-                    Console.Write(noProgress);
-                Console.SetCursorPosition(Position.x, Position.y+i+1);
+                    UIElement.Write(noProgress);
+                UIElement.CursorPos(Position.x, Position.y+i+1);
                 previousString++;
             }
-            Console.Write(ends);
+            UIElement.Write(ends);
             //if(Selected) Console.BackgroundColor = ConsoleColor.Black; // i shouldve put this in inputsystem isntead of putting it in every file. too bad!
         }
 
         public void DeRender()
         {
-            Console.SetCursorPosition(Position.x, Position.y);
+            UIElement.CursorPos(Position.x, Position.y);
             for(int i = 0; i < previousString; i++)
             {
-                Console.SetCursorPosition(Position.x, Position.y+i+1);
-                Console.Write(" ");
+                UIElement.CursorPos(Position.x, Position.y+i+1);
+                UIElement.Write(" ");
             }
             previousString = 0;
         }
@@ -79,7 +79,7 @@ namespace Renderer
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition(Position.x, Position.y);
+            UIElement.CursorPos(Position.x, Position.y);
             Render();
         }
 

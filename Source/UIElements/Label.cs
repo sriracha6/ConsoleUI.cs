@@ -32,37 +32,34 @@ namespace Renderer
 
         public void Render()
         {
-            Console.SetCursorPosition(Position.x, Position.y);
+            UIElement.CursorPos(Position.x, Position.y);
             previousString = UIElement.ParsePreviousString(text);
             int nlcount = 0;
             for(int i = 0; i < text.Length; i++)
             {
                 if(text[i] != '\n')
-                    Console.Write(text[i]);
+                    UIElement.Write(text[i]);
                 else
                 {
                     nlcount++;
-                    Console.SetCursorPosition(Position.x, Position.y+nlcount);
+                    UIElement.CursorPos(Position.x, Position.y+nlcount);
                 }
             }
         }
 
         public void DeRender()
         {
-            lock(new object())
-            {
-                Console.SetCursorPosition((int)Position.x, (int)Position.y);
-            }
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
             Console.ResetColor();
             int nlcount = 0;
             for(int i = 0; i < previousString.Length; i++)
             {
                 if(previousString[i] != '\n') 
-                    Console.Write(" ");
+                    UIElement.Write(" ");
                 else
                 {
                     nlcount++;
-                    Console.SetCursorPosition(Position.x, Position.y+nlcount);
+                    UIElement.CursorPos(Position.x, Position.y+nlcount);
                 }
             }
         }
@@ -70,10 +67,7 @@ namespace Renderer
         public void ReRender()
         {
             DeRender();
-            lock(new object())
-            {
-                Console.SetCursorPosition(Position.x, Position.y);
-            }
+            UIElement.CursorPos(Position.x, Position.y);
             Render();
         }
     }

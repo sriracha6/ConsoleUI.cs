@@ -18,7 +18,7 @@ namespace Renderer
             if(position.x > Console.WindowWidth || position.y > Console.WindowHeight)
                 throw new ArgumentOutOfRangeException("Position cannot be greater than window size");
             
-            Console.SetCursorPosition(position.x, position.y);
+            UIElement.CursorPos(position.x, position.y);
             inputItemsOrdered.Add(item);
             inputItemsPositions.Add(position);
             item.Position = position;
@@ -32,7 +32,7 @@ namespace Renderer
             if(position.x > Console.WindowWidth || position.y > Console.WindowHeight)
                 throw new ArgumentOutOfRangeException("Position cannot be greater than window size");
             
-            Console.SetCursorPosition(position.x, position.y);
+            UIElement.CursorPos(position.x, position.y);
             itemsOrdered.Add(item);
             item.Position = position;
             item.Render();

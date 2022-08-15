@@ -40,27 +40,27 @@ namespace Renderer
             if(Char == null)
             {
                 Console.BackgroundColor = Color;
-                Console.Write(' ');
+                UIElement.Write(' ');
             }
             else
             {
                 Console.ForegroundColor = Color;
-                Console.Write(Char);
+                UIElement.Write(Char);
             }
             Console.ResetColor();
         }
 
         public void DeRender()
         {
-            Console.SetCursorPosition(Position.x, Position.y);
+            UIElement.CursorPos(Position.x, Position.y);
             Console.ResetColor();
-            Console.Write(' ');
+            UIElement.Write(' ');
         }
 
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition(Position.x, Position.y);
+            UIElement.CursorPos(Position.x, Position.y);
             Render();
         }
     }

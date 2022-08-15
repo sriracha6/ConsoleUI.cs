@@ -33,7 +33,7 @@ namespace Renderer
                         currentItemIndex = URenderer.inputItemsOrdered.Count - 1;
                     Console.ResetColor();
                     var pos = URenderer.inputItemsPositions[currentItemIndex];
-                    Console.SetCursorPosition(pos.x, pos.y);
+                    UIElement.CursorPos(pos.x, pos.y);
                     currentItem = URenderer.inputItemsOrdered[currentItemIndex];
                     currentItem.Selected = true;
                     currentItem.OnHover();

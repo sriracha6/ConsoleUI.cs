@@ -29,9 +29,13 @@ using Renderer;
 
 */
 
+// NOTE:
+//  You have to use UIElement.CursorPos(); to position cursor instead of Console.SetCursorPosition();
+//  This also applies to Console.Write(); and Console.WriteLine();
+
 // The contents of ReRender() should almost always be:
 // DeRender();
-// Console.SetCursorPosition(Position.x, Position.y);
+// UIElement.CursorPos(Position.x, Position.y);
 // Render();
 
 // if you are making an animated element, you need to add this line to your constructor:

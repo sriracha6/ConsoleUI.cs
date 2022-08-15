@@ -63,22 +63,22 @@ namespace Renderer
             if(this.Width <= 0 || Progress > this.Width)
                 throw new ArgumentException("ProgressBar width must be greater than 0 and progress must be less than width.");
             previousString = Width + 2;
-            Console.Write(leftSide);
-            Console.Write(new string(progressChar, this.Progress));
-            Console.Write(new string(noProgress, this.Width - this.Progress));
-            Console.Write(rightSide);
+            UIElement.Write(leftSide);
+            UIElement.Write(new string(progressChar, this.Progress));
+            UIElement.Write(new string(noProgress, this.Width - this.Progress));
+            UIElement.Write(rightSide);
         }
 
         public void DeRender()
         {
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
-            Console.Write(new string(' ', previousString));
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
+            UIElement.Write(new string(' ', previousString));
         }
 
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
             Render();
         }
     }

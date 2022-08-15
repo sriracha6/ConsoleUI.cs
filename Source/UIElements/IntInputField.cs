@@ -77,22 +77,22 @@ namespace Renderer
             if(text.ToString().Length > 0) s = leftSide + text.ToString().Substring(scrollLeft, amount) + new string('.', width-amount) + rightSide + upDown;
             else s = leftSide + PlaceHolder.ToString().Substring(scrollLeft, amount) + new string('.', width-amount) + rightSide + upDown;
             
-            Console.Write(s);
-            Console.SetCursorPosition(scrollLeft == 0 && text.ToString().Length <= width ? Position.x + text.ToString().Length + 1 : Position.x + width + 1, Position.y);
+            UIElement.Write(s);
+            UIElement.CursorPos(scrollLeft == 0 && text.ToString().Length <= width ? Position.x + text.ToString().Length + 1 : Position.x + width + 1, Position.y);
             previousString = UIElement.ParsePreviousString(s);
             if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
 
         public void DeRender()
         {
-            Console.SetCursorPosition(Position.x, Position.y);
-            Console.Write(previousString);
+            UIElement.CursorPos(Position.x, Position.y);
+            UIElement.Write(previousString);
         }
 
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
             Render();
         }
 

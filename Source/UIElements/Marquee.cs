@@ -52,10 +52,7 @@ namespace Renderer
         public void ReRender()
         {
             DeRender();
-            lock(new object())
-            {
-                Console.SetCursorPosition(Position.x, Position.y);
-            }
+            UIElement.CursorPos(Position.x, Position.y);
             Render();
         }
 
@@ -68,17 +65,21 @@ namespace Renderer
 
             todo..
             */
-            if(tickCount + Width >= text.Length || tickCount < 0)
+            lock(new object())
             {
-                revolutions++;
-                if(revolutions % 2 == 0) tickCount = 0;
-                else tickCount = text.Length;
-                label.text = text.Substring(tickCount, tickCount + Width > text.Length ? text.Length - tickCount : Width);
+                Console.ResetColor();
+                if(tickCount + Width >= text.Length || tickCount < 0)
+                {
+                    revolutions++;
+                    if(revolutions % 2 == 0) tickCount = 0;
+                    else tickCount = text.Length;
+                    label.text = text.Substring(tickCount, tickCount + Width > text.Length ? text.Length - tickCount : Width);
+                }
+                else 
+                    label.text = text.Substring(tickCount, Width);
+                if (revolutions % 2 == 0) tickCount++;
+                else tickCount--;
             }
-            else 
-                label.text = text.Substring(tickCount, Width);
-            if (revolutions % 2 == 0) tickCount++;
-            else tickCount--;
         }
     }
 }

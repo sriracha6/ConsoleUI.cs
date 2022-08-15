@@ -68,18 +68,18 @@ namespace Renderer
             if(Selected) Console.BackgroundColor = Window.SelectedColor;
             string s = leftSide + (IsChecked ? checkedC : " ") + rightSide + " " + Text;
             previousString = UIElement.ParsePreviousString(s);
-            Console.Write(s);
+            UIElement.Write(s);
             if(Selected) Console.BackgroundColor = ConsoleColor.Black;
         }
         public void DeRender()
         {
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
-            Console.Write(previousString);
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
+            UIElement.Write(previousString);
         }
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition((int)Position.x, (int)Position.y);
+            UIElement.CursorPos((int)Position.x, (int)Position.y);
             Render();
         }
     }

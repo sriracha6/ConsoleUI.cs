@@ -35,10 +35,10 @@ namespace Renderer
         public void Render()
         {
             Panel.Position = Position;
-            Console.SetCursorPosition(Position.x, Position.y);
+            UIElement.CursorPos(Position.x, Position.y);
             Panel.Render();
-            Console.SetCursorPosition(Position.x+2, Position.y);
-            Console.Write(Text);
+            UIElement.CursorPos(Position.x+2, Position.y);
+            UIElement.Write(Text);
         }
 
         public void DeRender()
@@ -49,7 +49,7 @@ namespace Renderer
         public void ReRender()
         {
             DeRender();
-            Console.SetCursorPosition(Position.x, Position.y);
+            UIElement.CursorPos(Position.x, Position.y);
             Render();
         }
     }
