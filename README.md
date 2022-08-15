@@ -54,7 +54,7 @@ Functionality
     [X] Placeholders in text boxes
     [ ] TextArea selection (shift+arrows to select, copy/cut/paste)
     [X] TextBox/IntTextBox cursor
-    [ ] TabIndex
+    [X] TabIndex
     [ ] HTML like file for layout with names.
 
 [X] Make every property public, rerender on change

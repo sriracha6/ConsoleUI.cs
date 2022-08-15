@@ -34,9 +34,9 @@ Functionality
     [X] Animations
     [X] OnHovers (bold, not bgcolor)
     [X] Placeholders in text boxes
-    [ ] TextArea selection (shift+arrows to select, copy/cut/paste)
+    [ ] TextArea selection (shift+arrows to select, copy/cut/paste, ctrl+backspace)
     [X] TextBox/IntTextBox cursor
-    [ ] TabIndex
+    [X] TabIndex
     [ ] HTML like file for layout with names.
     [X] UIElement.SetCursorPos(); WITH LOCK BECAUSE MULTITHREADING!
 
