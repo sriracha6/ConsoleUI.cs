@@ -27,7 +27,7 @@ namespace Renderer
 
             VerticalScrollBar vscroller = new VerticalScrollBar(0, 10);
             BigTextBox listView = new BigTextBox("This text is too big for this box. So, a scroller will appear and you can scroll it. This UI element is a wrapper of another one that can display single lines.", 10, 5);
-            SelectListView sView = new SelectListView(new List<string>() {"This", "is", "a", "selectable", "list", "view", "It", "is", "hard", "to", "control", "imo"}, 10, 5, ConsoleColor.DarkGray, true);
+            SelectListView sView = new SelectListView(new List<string>() {"This", "is", "a", "selectable", "list", "view", "It", "is", "hard", "to", "control", "imo"}, 10, 5, System.Drawing.Color.Gray, true);
             HorizontalScrollBar hscroller = new HorizontalScrollBar(0,10);
 
             TextArea ta = new TextArea("This. is a textarea. \nIt probably took a while for me to make. \nThis particular one has a text length limit of 1000\nHave fun typing away.\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest\ntest", 10,10, 1000, true, new HorizontalScrollBar(0, 10), new VerticalScrollBar(0,10));

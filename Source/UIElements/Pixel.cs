@@ -7,7 +7,7 @@ namespace Renderer
         Vector2 _Position;
         public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
         public char? Char;
-        public ConsoleColor Color;
+        public System.Drawing.Color Color;
 
         bool _Visible = true;
         public bool Selected { get; set; }
@@ -24,13 +24,13 @@ namespace Renderer
             } 
         }
 
-        public Pixel(char? Char, ConsoleColor fgColor)
+        public Pixel(char? Char, System.Drawing.Color fgColor)
         {
             this.Char = Char;
             this.Color = fgColor;
         }
 
-        public Pixel(ConsoleColor bgColor)
+        public Pixel(System.Drawing.Color bgColor)
         {
             this.Color = bgColor;
         }
@@ -38,16 +38,9 @@ namespace Renderer
         public void Render()
         {
             if(Char == null)
-            {
-                Console.BackgroundColor = Color;
-                UIElement.Write(' ');
-            }
+                UIElement.Write(" ".Highlight(Color));
             else
-            {
-                Console.ForegroundColor = Color;
-                UIElement.Write(Char);
-            }
-            Console.ResetColor();
+                UIElement.Write(Char.ToString().Color(Color));
         }
 
         public void DeRender()

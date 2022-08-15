@@ -47,8 +47,8 @@ namespace Renderer
             } 
         }
 
-        ConsoleColor _slc;
-        public ConsoleColor selectedColor { get { return _slc; } set { _slc = value; if(_Position != null) ReRender(); } }
+        System.Drawing.Color _slc;
+        public System.Drawing.Color selectedColor { get { return _slc; } set { _slc = value; if(_Position != null) ReRender(); } }
 
         bool _outieScrollbars;
         public bool outieScrollbars { get { return _outieScrollbars; } set { _outieScrollbars = value; ReRender(); } }
@@ -60,7 +60,7 @@ namespace Renderer
         public delegate void OnValueChange();
         public event OnValueChange OnValueChangeEvent;
 
-        public SelectListView(List<string> options, int width, int height, ConsoleColor selectedColor, bool outieScrollbars)
+        public SelectListView(List<string> options, int width, int height, System.Drawing.Color selectedColor, bool outieScrollbars)
         {
             this.options = options;
             this.Width = width;
@@ -116,12 +116,14 @@ namespace Renderer
             int y = 0;
             for (int i = progress; i < progress+Height+1; i++)
             {
+                bool flag = false;
                 if(i >= Height+1+progress || i >= options.Count) 
                     break;
                 if(i == SelectedItemIndex)
-                    Console.BackgroundColor = selectedColor; 
+                    flag = true;
                 UIElement.CursorPos(Position.x, Position.y + y);
-                UIElement.Write(options[i]);
+                if (!flag) UIElement.Write(options[i]);
+                else UIElement.Write(options[i].Highlight(selectedColor));
 
                 if(Selected) Console.BackgroundColor = Window.SelectedColor;
                 else Console.ResetColor();

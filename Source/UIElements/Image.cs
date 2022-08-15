@@ -35,7 +35,7 @@ namespace Renderer
             this.Pixels = pixels;
         }
 
-        public Image(string[] lines, ConsoleColor color, int width, int height)
+        public Image(string[] lines, System.Drawing.Color color, int width, int height)
         {
             this.Pixels = new Pixel[width, height];
             for(int i = 0; i < width; i++)
@@ -54,8 +54,7 @@ namespace Renderer
                 for(int j = 0; j < Height; j++)
                 {
                     UIElement.CursorPos((int)Position.x+i, (int)Position.y+j);
-                    Console.ForegroundColor = Pixels[i, j].Color;
-                    UIElement.Write(Pixels[i, j].Char);
+                    UIElement.Write(Pixels[i, j].Char.ToString().Color(Pixels[i, j].Color));
                 }
             }
             previousStringX = Width;//(Width, Height);

@@ -16,8 +16,8 @@ namespace Renderer
         int previousStringH;
         int previousStringW;
 
-        ConsoleColor _selectedColor = ConsoleColor.DarkGray;
-        ConsoleColor selectedColor { get { return _selectedColor; } set {_selectedColor = value; if(_Position != null) ReRender(); } }
+        System.Drawing.Color _selectedColor = System.Drawing.Color.Gray;
+        System.Drawing.Color selectedColor { get { return _selectedColor; } set {_selectedColor = value; if(_Position != null) ReRender(); } }
 
         public delegate void OnValueChange();
         public event OnValueChange OnValueChangeEvent;
@@ -42,7 +42,7 @@ namespace Renderer
             Options = options;
         }
 
-        public OptionGroup(List<string> options, ConsoleColor selectedColor)
+        public OptionGroup(List<string> options, System.Drawing.Color selectedColor)
         {
             Options = options;
             this.selectedColor = selectedColor;
@@ -82,8 +82,7 @@ namespace Renderer
             {
                 if(selectedOption == i)
                 {
-                    Console.BackgroundColor = selectedColor;
-                    UIElement.Write(Options[i]+"\n");
+                    UIElement.Write(Options[i].Highlight(selectedColor)+"\n");
                     if(!Selected) Console.ResetColor();
                     else Console.BackgroundColor = Window.SelectedColor;
                 }

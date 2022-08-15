@@ -47,10 +47,10 @@ Functionality
     [X] Input (tab navigate) IInputable
     [X] ReRender
     [X] Color (use AnsiString instaed of complicating things)
-    [ ] ConsoleColor -> System.Drawing.Color
+    [X] ConsoleColor -> System.Drawing.Color
     [X] Derive from UIElement
     [X] Animations
-    [X] OnHovers (bold, not bgcolor)
+    [X] OnHovers
     [X] Placeholders in text boxes
     [ ] TextArea selection (shift+arrows to select, copy/cut/paste)
     [X] TextBox/IntTextBox cursor

@@ -11,6 +11,11 @@ namespace Renderer
             this.Text = text;
         }
 
+        public override string ToString()
+        {
+            return (string)this;
+        }
+
         public static implicit operator AnsiString(string text)
         {
             return new AnsiString(text);
