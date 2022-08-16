@@ -39,7 +39,7 @@ Elements
     [X] Blink
     [X] Horizontal Rule
     [X] Slider
-    [ ] Table
+    [X] Table
     [X] Pixel
 
 Functionality
@@ -52,7 +52,7 @@ Functionality
     [X] Animations
     [X] OnHovers
     [X] Placeholders in text boxes
-    [ ] TextArea selection (shift+arrows to select, copy/cut/paste)
+    [ ] TextArea selection (shift+arrows to select, copy/cut/paste, ctrl+backspace, tab)
     [X] TextBox/IntTextBox cursor
     [X] TabIndex
     [ ] HTML like file for layout with names.

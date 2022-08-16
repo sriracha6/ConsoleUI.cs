@@ -23,7 +23,7 @@ namespace Renderer
             InputField inputfield = new InputField("", 10, 100, "Type here");
             IntInputField intinputfield = new IntInputField(0, 5, 100, -5, "Num");
 
-            GroupBox gBox = new GroupBox("Stuff", new Panel(20, 20, BorderType.Single, ' '));
+            GroupBox gBox = new GroupBox("Stuff", new Panel(20, 20, BorderType.Single, " "));
 
             VerticalScrollBar vscroller = new VerticalScrollBar(0, 10);
             BigTextBox listView = new BigTextBox("This text is too big for this box. So, a scroller will appear and you can scroll it. This UI element is a wrapper of another one that can display single lines.", 10, 5);
@@ -35,6 +35,16 @@ namespace Renderer
 
             Blink blink = new Blink("Blink!");
             Marquee marquee = new Marquee("Marquee!!!!", 7);
+
+            List<string> tableCols = new List<string>() { "Name", "Age", "Is Test" };
+            List<int> colWidths = new List<int>() {8, 5, 7};
+            List<List<string>> tableRows = new List<List<string>> 
+            {
+                 new List<string>() {"Bob", "25", "Yes"},
+                 new List<string>() {"John", "30", "No"},
+                 new List<string>() {"Jane", "25", "Yes"},
+            };
+            Table table = new Table(tableCols, colWidths, tableRows, BorderType.Double);
 
             // order of URenderer.Render is the zLevel stuff. Panels are almost always first. 
             //   it is also used for TabIndex
@@ -54,6 +64,7 @@ namespace Renderer
             URenderer.Render(ta, new Vector2(50, 5));
             URenderer.Render(blink, new Vector2(20, 0));
             URenderer.Render(marquee, new Vector2(1, 17));
+            URenderer.Render(table, new Vector2(30, 20));
         }
     }
 }

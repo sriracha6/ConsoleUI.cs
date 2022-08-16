@@ -37,5 +37,19 @@ namespace Renderer
         {
             lock(lck) { Console.WriteLine(text.ToString()); }
         }
+
+        public static void ClearArea(int x, int y, int width, int height)
+        {
+            lock(lck) 
+            {
+                Console.ResetColor();
+                Console.SetCursorPosition(x,y);
+                for(int i = 0; i < height; i++)
+                {
+                    Console.Write(new string(' ', width));
+                    Console.SetCursorPosition(x,y+i);
+                }               
+            }
+        }
     }
 }

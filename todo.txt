@@ -21,7 +21,7 @@ Elements
     [X] Blink
     [X] Horizontal Rule
     [X] Slider
-    [ ] Table
+    [X] Table
     [X] Pixel
 
 Functionality

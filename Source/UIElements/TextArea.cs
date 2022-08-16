@@ -224,24 +224,28 @@ namespace Renderer
         {
             if(character.Key == ConsoleKey.Backspace)
             {
-                if(cursorPos.x-1 >= 0 && !flag)
-                cursorPos.x--;
-                if(cursorPos.x < 0) {cursorPos.x = 0; return;}
-
-                if(lines[cursorPos.y].Length == 0)
+                if(character.Modifiers != ConsoleModifiers.Control)
                 {
-                    lines.RemoveAt(cursorPos.y);
-                    cursorPos.y--;
-                    cursorPos.x = lines[cursorPos.y].Length;
+                    if(cursorPos.x-1 >= 0 && !flag)
+                    cursorPos.x--;
+                    if(cursorPos.x < 0) {cursorPos.x = 0; return;}
+                    
+                    if(lines[cursorPos.y].Length == 0)
+                    {
+                        lines.RemoveAt(cursorPos.y);
+                        cursorPos.y--;
+                        cursorPos.x = lines[cursorPos.y].Length;
+                    }
+                    else
+                        lines[cursorPos.y] = lines[cursorPos.y].Remove(cursorPos.x, 1);
                 }
-                else
-                    lines[cursorPos.y] = lines[cursorPos.y].Remove(cursorPos.x, 1);
                 
                 if(cursorPos.x < scrollLeft)
                 {
                     flag = true;
                     OnLeftArrow();
                 }
+                
             }
             else
             {   

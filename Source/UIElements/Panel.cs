@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Renderer
 { 
@@ -8,6 +9,8 @@ namespace Renderer
         public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
         int _width;
         int _height;
+
+        public List<IRenderable> Children = new List<IRenderable>();
 
         public int width { get { return _width; } set { _width = value; if(_Position != null) ReRender(); } }
         public int height { get { return _height; } set { _height = value; if(_Position != null) ReRender(); } }
@@ -29,16 +32,26 @@ namespace Renderer
 
         Border border;
         public BorderType borderType { get { return border.borderType; } set { border = new Border(value); if(_Position != null) ReRender(); } }
-        char _fillChar;
-        public char fillChar { get { return _fillChar; } set { _fillChar = value; if(_Position != null) ReRender(); } }
+        string _fillChar;
+        public string fillChar { get { return _fillChar; } set { _fillChar = value; if(_Position != null) ReRender(); } }
         string previousString;
 
-        public Panel(int width, int height, BorderType borderType, char fillChar)
+        public Panel(int width, int height, BorderType borderType, string fillChar)
         {
             this.width = width;
             this.height = height;
             this.borderType = borderType;
             this.fillChar = fillChar;
+            this.border = new Border(borderType);
+        }
+
+        public Panel(int width, int height, BorderType borderType, string fillChar, List<IRenderable> children)
+        {
+            this.width = width;
+            this.height = height;
+            this.borderType = borderType;
+            this.fillChar = fillChar;
+            this.Children = children;
             this.border = new Border(borderType);
         }
 
@@ -55,6 +68,11 @@ namespace Renderer
                     nlcount++;
                     UIElement.CursorPos(Position.x, Position.y+nlcount);
                 }
+            }
+            foreach(IRenderable r in Children)
+            {
+                r.Visible = Visible;
+                if(r.Visible) r.DeRender();
             }
             previousString = "";
         }
@@ -93,6 +111,8 @@ namespace Renderer
             DeRender();
             UIElement.CursorPos(Position.x, Position.y);
             Render();
+            foreach(IRenderable child in Children)
+                child.ReRender();
         }
     }
 }
