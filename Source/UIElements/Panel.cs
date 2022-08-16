@@ -6,9 +6,19 @@ namespace Renderer
     public class Panel : IRenderable
     {
         Vector2 _Position;
-        public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); _Position = value; } }
+        public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); positionDelta = new Vector2(_Position.x-value.x,_Position.y-value.y); _Position = value; Reposition(); } }
+        Vector2 positionDelta;
         int _width;
         int _height;
+
+        void Reposition()
+        {
+            if(Children != null && Children.Count > 0)
+            foreach(var child in Children)
+            {
+                child.Position = new Vector2(child.Position.x+positionDelta.x, child.Position.y+positionDelta.y);
+            }
+        }
 
         public List<IRenderable> Children = new List<IRenderable>();
 

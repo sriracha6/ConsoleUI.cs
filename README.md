@@ -60,3 +60,4 @@ Functionality
 [X] Make every property public, rerender on change
 [X] Ansi string class. IE new AnsiString("Hello") + " World!".Color(ConsoleColor.Green) + " Bold".Bold();
 ```
+I loved making this library, but I am going to leave it for a while to pursure other projects. There will be occasional updates. You can still make changes and submit pull requests, and I will accept them.
