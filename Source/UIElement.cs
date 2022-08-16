@@ -27,7 +27,11 @@ namespace Renderer
         static object lck = new object();
         public static void CursorPos(int x, int y)
         {
-            lock(lck) { Console.SetCursorPosition(x, y); }
+            lock(lck) 
+            {
+                if(x < 0 || y < 0 || x >= Console.WindowWidth || y >= Console.WindowHeight) return;
+                Console.SetCursorPosition(x, y);
+            }
         }
         public static void Write(object text)
         {

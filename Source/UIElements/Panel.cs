@@ -6,7 +6,7 @@ namespace Renderer
     public class Panel : IRenderable
     {
         Vector2 _Position;
-        public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); positionDelta = new Vector2(_Position.x-value.x,_Position.y-value.y); _Position = value; Reposition(); } }
+        public Vector2 Position { get { return _Position; } set { if(_Position != null) DeRender(); if(_Position != null) positionDelta = new Vector2(_Position.x-value.x,_Position.y-value.y); _Position = value; Reposition(); } }
         Vector2 positionDelta;
         int _width;
         int _height;
