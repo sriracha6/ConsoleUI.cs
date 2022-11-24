@@ -5,6 +5,8 @@ A simple, extensible Console UI library in C-Sharp.
 
 Controllable using tab, shift+tab, arrow keys, and enter.
 
+For windows. Requires advanced terminal features (latest version). I'll make it not require it sometime in the future.
+
 ## How to Use
 You can clone the directory and put the `Source` folder in your project, get it on NuGet or go to releases.
 
@@ -56,6 +58,7 @@ Functionality
     [X] TextBox/IntTextBox cursor
     [X] TabIndex
     [ ] HTML like file for layout with names.
+    [ ] Don't require advanced terminal features.
 
 [X] Make every property public, rerender on change
 [X] Ansi string class. IE new AnsiString("Hello") + " World!".Color(ConsoleColor.Green) + " Bold".Bold();
